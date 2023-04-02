@@ -1,6 +1,6 @@
 # VRA-Central
 
-The final version of this app will be hosted on GCP.  However, for testing and development purposes, we will use a local xampp database as well as a local xampp apache webserver.
+The final version of this app will be hosted on GCP.  However, for testing and development purposes, we will use the CS server database as well as a local xampp apache webserver.
 
 ## deploying on XAMPP
 
@@ -10,14 +10,8 @@ For local development, navigate to your xampp/htdocs folder via the command line
 
 Once you have opened up the xampp app on your computer and started the apache webserver, you can view the app through your webbrowser at http://localhost/vra-central/index.php
 
-## correctly connecting the DB
+## correctly connecting the CS server database
 
-The connect-db.php folder contains the code to connect the webapp to a database.  Currently, it is configured through a local xampp database.  To ensure your data base works correctly you must ensure you local xampp database is set up in an identical way to how I have it configured.  To configure it correctly follow these steps:
+The connect-db.php folder contains the code to connect the webapp to a database.  Currently, it is configured through the CS server database.  There is nothing that should need to be done to connect to the database... it should connect automatically.  However, if you wish to change the database (example: add a table or something) navigate to http://mysql01.cs.virginia.edu/phpmyadmin/ and login with the username "mr3ea" and the password ")4/egLRTZAYEj)pC".
 
-1. Open up the apache app on your computer and start the MySQL and apache webserver features
-2. go to your webbrowser and navigate to "localhost".  On the page that loads click on "phpMyAdmin" in the upper left part of the menubar
-3. Once on the correct page, select "User Accounts" from the toolbar.  Create a new user with username "me", password "1234", and host name "localhost"
-4. Under "Database for user account" check both boxes and for "Global privileges" check the "checkall" box.  Finally click the button to create the user
-5. create a database called "central"
-6. Click on "import" and import the "createtables.sql" file from milestone 2.  (NOTE: download a new version of this from github since I have changed it)
-7. everything should be up and running if you followed these steps correctly
+Note: the database we are using is called "mr3ea"
