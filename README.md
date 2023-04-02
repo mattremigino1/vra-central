@@ -4,7 +4,7 @@ The final version of this app will be hosted on GCP.  However, for testing and d
 
 ## deploying on XAMPP
 
-Instructions to deploy on xampp can be found here: https://www.cs.virginia.edu/~up3f/cs4640/supplement/basic-deployment.html#section3 
+Instructions to deploy on xampp can be found here: https://www.cs.virginia.edu/~up3f/cs4640/supplement/basic-deployment.html#section1
 
 For local development, navigate to your xampp/htdocs folder via the command line and type "git clone https://github.com/mattremigino1/vra-central" into the command line to place the folder in the correct spot.  From here, navigate into the folder using the comman "cd vra-central".  It is from this location you can create a new branch using "git branch --newbranchname" and develop code for whatever feature you wish.  
 
