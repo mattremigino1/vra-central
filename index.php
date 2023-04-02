@@ -32,7 +32,7 @@ $tmrrwWorkout = getTmrrwWorkout();
 
 <body>
 
-<?php //include("header.html") ?>
+<?php include("header.html") ?>
 <div class="container">
   <h1><b>VRA Central</b></h1>  
   <br>
