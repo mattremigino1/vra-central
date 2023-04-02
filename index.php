@@ -18,10 +18,10 @@ $tmrrwWorkout = getTmrrwWorkout();
   
   <!-- 2. include meta tag to ensure proper rendering and touch zooming -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="author" content="your name">
-  <meta name="description" content="include some description about your page">  
+  <meta name="author" content="Matt Remigino, Alex Becker, Maajid Husain, Yusuf Cetin">
+  <meta name="description" content="Virginia Men's Rowing Central">  
     
-  <title>CS 4750: POTD 5</title>
+  <title>VRA Central</title>
 
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
   <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
