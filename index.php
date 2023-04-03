@@ -1,12 +1,16 @@
 <?php
 require("connect-db.php"); 
 // include("connect-db.php");
+session_start();
 
 require("central-db.php");
 // include("friend-db.php");
 
+$athlete_id = $_SESSION['athlete_id'];
+
 $todayWorkout = getTodayWorkout();
 $tmrrwWorkout = getTmrrwWorkout();
+$lineupBoat = getLineup($athlete_id);
 
 ?>
 
@@ -32,7 +36,17 @@ $tmrrwWorkout = getTmrrwWorkout();
 
 <body>
 
-<?php include("header.html") ?>
+<?php 
+
+include("header.html"); 
+
+
+if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
+} else {
+  header("Location: login.php");
+}
+
+?>
 <div class="container">
   <h1><b>VRA Central</b></h1>  
   <br>
@@ -79,6 +93,37 @@ $tmrrwWorkout = getTmrrwWorkout();
              } 
              ?></td>     
              <td><?php echo $item['descr']; ?></td>               
+          </tr>
+       <?php endforeach; ?>
+        </table>
+  </div>
+
+  <br>
+  <div class="row justify-content-center">
+  <h2>Your Lineup</h2> 
+        <table class="w3-table w3-bordered w3-card-4 center" style="width:70%">
+          <thead>
+          <tr style="background-color:#B0B0B0">
+            <th>Boat</th>        
+            <th>Oars</th>
+            <th>Rigging</th>
+            <th>Coxswain</th>
+            <th>Stroke</th>
+            <th>7</th>
+            <th>6</th> 
+            <th>5</th> 
+            <th>4</th> 
+            <th>3</th> 
+            <th>2</th> 
+            <th>1</th>      
+          </tr>
+          </thead>
+      <?php foreach ($lineupBoat as $item): ?>
+          <tr>
+             <td><?php 
+             $item['boat_name'];
+             ?></td>     
+                          
           </tr>
        <?php endforeach; ?>
         </table>

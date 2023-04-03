@@ -1,4 +1,8 @@
-<?php require("connect-db.php"); ?>
+<?php 
+
+    require("connect-db.php"); 
+    session_start();
+?>
 
 <!DOCTYPE html>
 <html>
@@ -39,13 +43,13 @@ function authenticate()
     global $db, $mainpage;
 
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-        $username = htmlspecialchars($_POST['athleteID']);
+        $athlete_id = htmlspecialchars($_POST['athleteID']);
         $password = htmlspecialchars($_POST['pwd']);
 
         // prepare a query to fetch the hashed password for the given username
         $sql = "SELECT psswrd FROM Passwords WHERE athlete_id = :athlete_id";
         $stmt = $db->prepare($sql);
-        $stmt->bindValue(':athlete_id', $username);
+        $stmt->bindValue(':athlete_id', $athlete_id);
         $stmt->execute();
         $row = $stmt->fetch(PDO::FETCH_ASSOC);
 
@@ -58,12 +62,14 @@ function authenticate()
             // compare the hashed password with the hash fetched from the database
             if (password_verify($password, $hash)) {
                 // successfully login, redirect the user to the main page
+                $_SESSION['loggedin'] = true;
+                $_SESSION['athlete_id'] = $athlete_id;
                 header("Location: " . $mainpage);
             } else {
-                echo "<span class='msg'>Username and password do not match our record</span> <br/>";
+                echo "<span class='msg'>Athlete ID and password do not match our record</span> <br/>";
             }
         } else {
-            echo "<span class='msg'>Username and password do not match our record</span> <br/>";
+            echo "<span class='msg'>Athlete ID and password do not match our record</span> <br/>";
         }
     }
 }
