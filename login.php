@@ -15,13 +15,13 @@
   <?php include('header.html') ?>
   
   <div>  
-    <h1>PHP: Form Handling</h1>
+    <h1>VRA Login</h1>
     <form action="login.php" method="post">     
-      Username: <input type="text" name="name" required /> <br/>
+      Athlete ID: <input type="text" name="athleteID" required /> <br/>
       Password: <input type="password" name="pwd" required /> <br/>
-      <input type="submit" value="Submit" class="btn" />
+      <input type="submit" class="btn btn-primary" value="Submit" />
     </form>
-    <input type="button" value="Create Account" onclick="location.href='create_account.php';">
+    <input type="submit" class="btn btn-dark" value="Create Account" onclick="location.href='create-account.php';">
  
     <?php
 
@@ -30,7 +30,7 @@ function authenticate()
     global $db, $mainpage;
 
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-        $username = htmlspecialchars($_POST['name']);
+        $username = htmlspecialchars($_POST['athleteID']);
         $password = htmlspecialchars($_POST['pwd']);
 
         // prepare a query to fetch the hashed password for the given username
