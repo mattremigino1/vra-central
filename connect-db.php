@@ -34,19 +34,19 @@
 ////////////////////////////////////////////
 
 /** S23, PHP (on GCP, local XAMPP, or CS server) connect to MySQL (on local XAMPP) **/
-$username = 'me';
-$password = '1234';
-$host = 'localhost:3306';           // default phpMyAdmin port = 3306
-$dbname = 'central';
-$dsn = "mysql:host=$host;dbname=$dbname";  
+// $username = 'me';
+// $password = '1234';
+// $host = 'localhost:3306';           // default phpMyAdmin port = 3306
+// $dbname = 'central';
+// $dsn = "mysql:host=$host;dbname=$dbname";  
 ////////////////////////////////////////////
 
 /** S23, PHP (on GCP, local XAMPP, or CS server) connect to MySQL (on CS server) **/
-// $username = 'your-computingID'; 
-// $password = 'your-mysql-password';
-// $host = 'mysql01.cs.virginia.edu';
-// $dbname = 'your-computingID';
-// $dsn = "mysql:host=$host;dbname=$dbname";
+$username = 'mr3ea'; 
+$password = ')4/egLRTZAYEj)pC';
+$host = 'mysql01.cs.virginia.edu';
+$dbname = 'mr3ea';
+$dsn = "mysql:host=$host;dbname=$dbname";
 ////////////////////////////////////////////
 
 // To find a hostname, access phpMyAdmin

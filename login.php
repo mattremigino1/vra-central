@@ -1,3 +1,5 @@
+<?php require("connect-db.php"); ?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -22,21 +24,6 @@
     <input type="button" value="Create Account" onclick="location.href='create_account.php';">
  
     <?php
-
-$dbhost = 'localhost';
-$dbname = 'central';
-$dbuser = 'me';
-$dbpass = '1234';
-
-
-try {
-    // connect to the database using PDO
-    $db = new PDO("mysql:host=$dbhost;dbname=$dbname", $dbuser, $dbpass);
-} catch (PDOException $e) {
-    // display an error message if the connection fails
-    echo "Failed to connect to the database: " . $e->getMessage();
-    exit;
-}
 
 function authenticate()
 {

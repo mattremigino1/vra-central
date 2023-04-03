@@ -1,3 +1,7 @@
+<?php include("new-athlete-handler.php"); ?>
+
+<?php include('footer.html') ?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -54,8 +58,6 @@
     <div class="error-container"></div>
   </div>
  
-  <?php include("new_athlete_handler.php"); ?>
 
-  <?php include('footer.html') ?>
   
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2Ml

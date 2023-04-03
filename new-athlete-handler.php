@@ -1,4 +1,8 @@
+
+
 <?php
+require("connect-db.php");
+
 $first_name = $last_name = $email = $phone = $dob = $grad_year = $height = $weight = $class = $boat_side = $two_kpr = $password = $pwd_confirm = NULL;
 $first_name_msg = $last_name_msg = $email_msg = $phone_msg = $dob_msg = $grad_year_msg = $height_msg = $weight_msg = $class_msg = $boat_side_msg = $two_kpr_msg = $password_msg = $pwd_confirm_msg = NULL;
 
@@ -90,26 +94,6 @@ if(!$first_name_msg || !$last_name_msg || !$email_msg || !$phone_msg || !$dob_ms
 if ($password !== $password_confirm) {
     echo "Passwords do not match!";
     header("Location: create_account.php");;
-}
-
-// connect to the database using PDO
-$db_host = 'localhost';
-$db_name = 'central';
-$db_user = 'me';
-$db_password = '1234';
-
-$dsn = "mysql:host=$db_host;dbname=$db_name;charset=utf8mb4";
-$options = [
-    PDO::ATTR_EMULATE_PREPARES => false,
-    PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
-    PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
-];
-
-try {
-    $pdo = new PDO($dsn, $db_user, $db_password, $options);
-} catch (PDOException $e) {
-    echo "Connection failed: " . $e->getMessage();
-    exit;
 }
 
 // prepare and execute the insert statement
