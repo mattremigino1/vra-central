@@ -12,14 +12,23 @@
 </head>
 <body>
   
-  <?php include('header.html') ?>
+  <?php include('header.html');
+
+    if(isset($_GET['athlete_id'])) {
+        echo "New Account Created Succesfully! \n Your Athlete ID is: ";
+        echo $_GET['athlete_id'];
+        echo "    You need this to login, so make sure to write it down!";
+    }
+
+  ?>
+
   
   <div>  
     <h1>VRA Login</h1>
     <form action="login.php" method="post">     
       Athlete ID: <input type="text" name="athleteID" required /> <br/>
       Password: <input type="password" name="pwd" required /> <br/>
-      <input type="submit" class="btn btn-primary" value="Submit" />
+      <input type="submit" class="btn btn-primary" value="Login" />
     </form>
     <input type="submit" class="btn btn-dark" value="Create Account" onclick="location.href='create-account.php';">
  
@@ -34,12 +43,14 @@ function authenticate()
         $password = htmlspecialchars($_POST['pwd']);
 
         // prepare a query to fetch the hashed password for the given username
-        $stmt = $db->prepare("SELECT password FROM Passwords WHERE username = ?");
-        $stmt->execute([$username]);
+        $sql = "SELECT psswrd FROM Passwords WHERE athlete_id = :athlete_id";
+        $stmt = $db->prepare($sql);
+        $stmt->bindValue(':athlete_id', $username);
+        $stmt->execute();
         $row = $stmt->fetch(PDO::FETCH_ASSOC);
 
         if ($row) {
-            $hash = $row['password'];
+            $hash = $row['psswrd'];
 
             // hash the password entered by the user
             $hashed_password = password_hash($password, PASSWORD_BCRYPT);

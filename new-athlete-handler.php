@@ -1,11 +1,19 @@
-
-
 <?php
-require("connect-db.php");
+
+function getAthID() {
+    global $db;
+    // get the new athlete ID
+    $sql = "SELECT MAX(athlete_id) FROM Athlete";
+    $stmt = $db->prepare($sql);
+    $stmt->execute();
+    $athlete_id = ($stmt->fetch())[0];
+    $stmt->closeCursor();
+
+    return $athlete_id;
+}
 
 function createAccount($first_name, $last_name, $email, $phone, $dob, $grad_year, $height, $ath_weight, $class, $boat_side, $two_kprM, $two_kprS, $password, $pwd_confirm) 
 { 
-    echo "Hello";
     global $db;
 
     // get total 2k PR
@@ -14,7 +22,7 @@ function createAccount($first_name, $last_name, $email, $phone, $dob, $grad_year
 // check if the passwords match
 if ($password !== $pwd_confirm) {
     echo "Passwords do not match!";
-    header("Location: create-account.php");;
+    header("Location: create-account.php");
 }
 
 // prepare and execute the insert statement
@@ -40,24 +48,25 @@ $stmt->execute();
 $stmt->closeCursor();
 
 // get the new athlete ID
-$sql = "SELECT MAX(athlete_id) FROM Athletes";
+$sql = "SELECT MAX(athlete_id) FROM Athlete";
 $stmt = $db->prepare($sql);
 $stmt->execute();
-$athlete_id = $stmt->fetch();
+$athlete_id = ($stmt->fetch())[0];
 $stmt->closeCursor();
 
 // hash the password
 $hashed_password = password_hash($password, PASSWORD_DEFAULT);
 
 // insert the hashed password into the passwords table
-$sql = "INSERT INTO Passwords (athlete_id, password) VALUES (:athlete_id, :password_hash)";
+$sql = "INSERT INTO Passwords (athlete_id, psswrd) VALUES (:athlete_id, :password_hash)";
 $stmt = $db->prepare($sql);
-$stmt->bindParam(':athlete_id', $athlete_id);
-$stmt->bindParam(':password', $hashed_password);
+$stmt->bindValue(':athlete_id', $athlete_id);
+$stmt->bindValue(':password_hash', $hashed_password);
 
 if ($stmt->execute()) {
 echo "New account created successfully! \n Your athleteID is: ";
 echo $athlete_id;
+echo "   ";
 echo "Make sure to write it down!";
 } else {
 echo "Error: " . $sql . "<br>" . $stmt->errorInfo()[2];
@@ -66,7 +75,6 @@ return False;
 $stmt->closeCursor();
 
 return True;
-
 }
 
 ?>

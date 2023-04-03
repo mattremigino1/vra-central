@@ -2,11 +2,12 @@
 require("new-athlete-handler.php"); 
 require("connect-db.php");
 
+$account_created = False;
+
 if ($_SERVER['REQUEST_METHOD'] == 'POST')
 {
   if (!empty($_POST['createAcctBtn']) && $_POST['createAcctBtn']=="Create Account")
   {
-    echo "HEllo";
     $account_created = createAccount(
       trim($_POST['first_name']), 
       trim($_POST['last_name']), 
@@ -23,9 +24,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
       trim($_POST['pwd']),
       trim($_POST['pwd_confirm']) 
     );
-    echo "goodbye";
+    $athlete_id = getAthID();
   }
-   
+}
+if ($account_created) {
+  $Message = urlencode($athlete_id);
+  header("Location:login.php?athlete_id=".$Message);
+  die;
 }
 
 ?>
@@ -52,7 +57,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
     <!-- who will handle the form submission -->
     <!-- how are the request sent -->
    
-    <form action="new-athlete-handler.php" method="post">
+    <form action="create-account.php" method="post">
       <label>First Name: </label>
       <input type="text" name="first_name" autofocus required /> <br/>
       <label>Last Name: </label>
