@@ -1,7 +1,12 @@
 <?php
 require("connect-db.php"); 
 // include("connect-db.php");
+
 session_start();
+if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
+} else {
+  header("Location: login.php");
+}
 
 require("central-db.php");
 // include("friend-db.php");
@@ -41,10 +46,7 @@ $lineupBoat = getLineup($athlete_id);
 include("header.html"); 
 
 
-if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
-} else {
-  header("Location: login.php");
-}
+
 
 ?>
 <div class="container">
