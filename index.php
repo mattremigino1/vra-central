@@ -3,6 +3,10 @@ require("connect-db.php");
 // include("connect-db.php");
 
 session_start();
+
+
+
+
 if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
 } else {
   header("Location: login.php");
@@ -19,8 +23,11 @@ $eights = getEights();
 $fours = getFours();
 $twoman = getTwoMan();
 $single = getSingle();
+$name = getName($athlete_id); //for welcome message after logging in
 
 $myLineup = myLineup($athlete_id);
+
+
 
 ?>
 
@@ -57,6 +64,25 @@ include("header.html");
 <div class="container">
   <h1><b>VRA Central</b></h1>  
   <br>
+  <h3> 
+    <?php
+    echo "Welcome "; echo $name[0]; echo ". Your Login ID: "; echo $athlete_id;
+    ?>
+    </h3>
+    <br>
+
+    <div>
+    <form action="index.php" method="post">     
+      <input type="submit" class="btn btn-primary" value="Logout" >
+    </form>
+    <br>
+
+    <?php
+    if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+      $_SESSION['loggedin'] = false;
+    }
+    ?>
+
   <div class="row justify-content-center">
   <h2>Today's Workouts</h2> 
         <table class="w3-table w3-bordered w3-card-4 center" style="width:70%">

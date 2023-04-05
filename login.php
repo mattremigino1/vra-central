@@ -29,7 +29,7 @@
   
   <div>  
     <h1>VRA Login</h1>
-    <form action="login.php" method="post">     
+    <form action="login.php" method="post">
       Athlete ID: <input type="text" name="athleteID" required /> <br/>
       Password: <input type="password" name="pwd" required /> <br/>
       <input type="submit" class="btn btn-primary" value="Login" />
