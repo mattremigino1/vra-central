@@ -20,6 +20,8 @@ $fours = getFours();
 $twoman = getTwoMan();
 $single = getSingle();
 
+$myLineup = myLineup($athlete_id);
+
 ?>
 
 <!-- 1. create HTML5 doctype -->
@@ -106,6 +108,19 @@ include("header.html");
   <br>
   <div class="row justify-content-center">
   <h2>Lineups</h2> </br>
+  <div class="row justify-content-center">
+  <h3>Your Boat and Seat: </h3> 
+  <table class="w3-table w3-bordered w3-card-4 center" style="width:70%">
+          <thead>
+          <tr style="background-color:#B0B0B0">
+            <th>Boat</th>        
+            <th>Seat</th>
+          </tr>
+          </thead>
+          <td><?php echo $myLineup[0]; ?></td>
+          <td><?php echo $myLineup[1]; ?></td>
+      </table>
+  </div>
   <div class="row justify-content-center">
   <h3>Eights</h3> 
   <table class="w3-table w3-bordered w3-card-4 center" style="width:70%">

@@ -50,6 +50,22 @@ function getSingle() {
     $statement->closeCursor();
     return $results;
 }
+function myLineup($athlete_id) {
+    global $db;
+    $query = "SELECT boat_name, seat FROM RowsIn WHERE athlete_id = :athlete_id";
+    // prepare
+    $statement = $db->prepare($query);
+    $statement->bindValue(':athlete_id', $athlete_id);
+    // execute
+    $statement->execute();
+    $results = $statement->fetch(); //fetch() will retrieve only first row fetchAll will retrieve all rows
+    // close cursor
+    $statement->closeCursor();
+    if (!$results) {
+        return array("Not Boated", "--");
+    }
+    return array($results["boat_name"], $results["seat"]);
+}
 
 function getName($athlete_id) {
     global $db;
