@@ -4,18 +4,6 @@ require("connect-db.php");
 
 session_start();
 
-if ($_SERVER['REQUEST_METHOD'] == 'POST')
-{
-
-  if(isset($_POST['logoutbutton'])) {
-    unset($_SESSION['loggedin']);
-    unset($_SESSION['athlete_id']);
-    session_destroy();
-    
-    header('location:login.php');
-  }
-}
-
 
 if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
 } else {
@@ -71,17 +59,12 @@ include("header.html");
 
 ?>
 <div class="container">
-  <h1><b>VRA Central</b></h1>  
   <br>
   <h3> 
     <?php
     echo "Welcome "; echo $name[0]; echo ". Your Athlete ID: "; echo $athlete_id;
     ?>
     </h3>
-    <div>
-    <form action="index.php" method="post">     
-      <input type="submit" name="logoutbutton" class="btn btn-primary" value="Logout" >
-    </form>
     <br>
 
   <div class="row justify-content-center">

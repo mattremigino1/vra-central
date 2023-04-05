@@ -1,25 +1,26 @@
-
-    
-    <header>  
+  <header>  
       <nav class="navbar navbar-expand-md navbar-dark bg-dark">
         <div class="container-fluid">            
-          <a class="navbar-brand" href="http://localhost/vra-central/index.php"><img style="max-width:75px;" src="icon.png"></a>
-          <!-- <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar" aria-controls="collapsibleNavbar" aria-expanded="false" aria-label="Toggle navigation">
+          <a class="navbar-brand" href="index.php"><img style="max-width:75px;"><b>VRA Central</b></a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar" aria-controls="collapsibleNavbar" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
           <div class="collapse navbar-collapse" id="collapsibleNavbar">
             <ul class="navbar-nav ms-auto">
-              <li class="nav-item">
-                <a class="nav-link" href="http://localhost/vra-central/login.php">Log out</a>
-              </li>            
+                          
               <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="dropdown01" role="button" data-bs-toggle="dropdown" aria-expanded="false">Research</a>
                 <ul class="dropdown-menu" aria-labelledby="dropdown01">
                   <li><a class="dropdown-item" href="#">Design</a></li>
                 </ul>
               </li>
+              <li class="nav-item">
+                <form action="logout.php" method="post">     
+                  <input type="submit" name="logoutbutton" class="btn btn-dark" value="Logout" >
+                </form>
+              </li>
             </ul>
-          </div> -->
+          </div>
         </div>
       </nav>
     </header>
