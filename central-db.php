@@ -1,8 +1,8 @@
 <?php
 
-function getLineup($athlete_id) {
+function getEights() {
     global $db;
-    $query = "SELECT boat_name FROM RowsIn WHERE athlete_id = $athlete_id";
+    $query = "SELECT * FROM EightMan";
     // prepare
     $statement = $db->prepare($query);
     // execute
@@ -10,6 +10,61 @@ function getLineup($athlete_id) {
     $results = $statement->fetchAll(); //fetch() will retrieve only first row fetchAll will retrieve all rows
     // close cursor
     $statement->closeCursor();
+    return $results;
+}
+
+function getFours() {
+    global $db;
+    $query = "SELECT * FROM FourMan";
+    // prepare
+    $statement = $db->prepare($query);
+    // execute
+    $statement->execute();
+    $results = $statement->fetchAll(); //fetch() will retrieve only first row fetchAll will retrieve all rows
+    // close cursor
+    $statement->closeCursor();
+    return $results;
+}
+function getTwoMan() {
+    global $db;
+    $query = "SELECT * FROM TwoMan";
+    // prepare
+    $statement = $db->prepare($query);
+    // execute
+    $statement->execute();
+    $results = $statement->fetchAll(); //fetch() will retrieve only first row fetchAll will retrieve all rows
+    // close cursor
+    $statement->closeCursor();
+    return $results;
+}
+
+function getSingle() {
+    global $db;
+    $query = "SELECT * FROM Single";
+    // prepare
+    $statement = $db->prepare($query);
+    // execute
+    $statement->execute();
+    $results = $statement->fetchAll(); //fetch() will retrieve only first row fetchAll will retrieve all rows
+    // close cursor
+    $statement->closeCursor();
+    return $results;
+}
+
+function getName($athlete_id) {
+    global $db;
+    $query = "SELECT CONCAT(first_name, ' ', last_name) AS Name FROM Athlete WHERE athlete_id = :athlete_id";
+    // prepare
+    $statement = $db->prepare($query);
+    $statement->bindValue(':athlete_id', $athlete_id);
+    // execute
+    $statement->execute();
+    $results = $statement->fetch(); //fetch() will retrieve only first row fetchAll will retrieve all rows
+    // close cursor
+    $statement->closeCursor();
+    if (!$results) {
+        return array("--");
+    }
     return $results;
 }
 
