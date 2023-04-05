@@ -4,7 +4,17 @@ require("connect-db.php");
 
 session_start();
 
+if ($_SERVER['REQUEST_METHOD'] == 'POST')
+{
 
+  if(isset($_POST['logoutbutton'])) {
+    unset($_SESSION['loggedin']);
+    unset($_SESSION['athlete_id']);
+    session_destroy();
+    
+    header('location:login.php');
+  }
+}
 
 
 if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
@@ -24,7 +34,6 @@ $fours = getFours();
 $twoman = getTwoMan();
 $single = getSingle();
 $name = getName($athlete_id); //for welcome message after logging in
-
 $myLineup = myLineup($athlete_id);
 
 
@@ -66,22 +75,14 @@ include("header.html");
   <br>
   <h3> 
     <?php
-    echo "Welcome "; echo $name[0]; echo ". Your Login ID: "; echo $athlete_id;
+    echo "Welcome "; echo $name[0]; echo ". Your Athlete ID: "; echo $athlete_id;
     ?>
     </h3>
-    <br>
-
     <div>
     <form action="index.php" method="post">     
-      <input type="submit" class="btn btn-primary" value="Logout" >
+      <input type="submit" name="logoutbutton" class="btn btn-primary" value="Logout" >
     </form>
     <br>
-
-    <?php
-    if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-      $_SESSION['loggedin'] = false;
-    }
-    ?>
 
   <div class="row justify-content-center">
   <h2>Today's Workouts</h2> 
