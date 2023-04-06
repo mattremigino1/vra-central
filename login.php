@@ -15,7 +15,9 @@
 </head>
 <body>
   
-  <?php include('header.html');
+  <?php 
+  
+//   include('header.html');
 
     if(isset($_GET['athlete_id'])) {
         echo "New Account Created Succesfully! \n Your Athlete ID is: ";
