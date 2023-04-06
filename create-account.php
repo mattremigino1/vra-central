@@ -49,7 +49,7 @@ if ($account_created) {
 </head>
 <body>
   
-  <?php include('header.html') ?>
+  <!-- <?php include('header.html') ?> -->
   <div class="form-container">  
     <h1>Create Your VRA Account</h1>
    
@@ -88,6 +88,7 @@ if ($account_created) {
       <label>Confirm Password: </label>
       <input type="password" name="pwd_confirm" required /> <br/>
       <input type="submit" name="createAcctBtn" value="Create Account" class="btn btn-primary" />
+      <br> <br> <br> <br>
       <!-- when the user clicks the button, the form data will be sent to form-handler.php -->
       <!-- the form data will be sent as a POST request -->
     </form>
@@ -97,7 +98,7 @@ if ($account_created) {
 
   
  
-
+  <?php include('footer.html') ?>
   
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
   </body>
