@@ -1,0 +1,65 @@
+/* LOGIN PAGE */
+.btn-link {
+  text-decoration: none!important;
+}
+
+.page-body {
+  min-height: 100vh;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.custom-footer {
+  margin-top: auto!important;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  color: grey;
+  height: 52px;
+}
+
+.login-form {
+  display: flex;
+  flex-direction: column;
+  width: 500px;
+  margin: 0 auto;
+}
+
+.login-form-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 90vh;
+}
+
+.login-btn {
+  width: inherit;
+  margin-top: 1rem;
+}
+
+.create-account-btn {
+  margin-top: .5rem;
+}
+
+.form-container {
+  display: flex;
+  flex-direction: column;
+  max-width: 500px;
+  margin: 80px auto 80px;
+}
+
+.form-group {
+  margin-bottom: 1rem;
+}
+
+/* ************************************************************************* */
+
+/* HOME PAGE */
+
+header {
+  width: 100%;
+}
