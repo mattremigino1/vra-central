@@ -58,7 +58,7 @@ if ($account_created) {
     <!-- who will handle the form submission -->
     <!-- how are the request sent -->
 
-    <form class="create-account-form">
+    <form action="create-account.php" method="post" class="create-account-form">
       <div class="form-group">
         <label for="fn">First Name: </label>
         <input type="text" class="form-control" name="first_name" id="fn" autofocus required />
