@@ -19,7 +19,7 @@ $displayedAthlete = $name[0];
 $totalMins = getTotalMins($athlete_id)[0];
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    if (!empty($_POST['selectAthlete']) && $_POST['selectAthlete'] == "Select") {
+    if (!empty($_POST['selectAthlete']) && $_POST['selectAthlete'] == "View Athlete") {
       $workouts = getExtraWorkouts($_POST['athlete']);
       $displayedAthlete = getName($_POST['athlete'])[0];
       $totalMins = getTotalMins($_POST['athlete'])[0];
@@ -64,6 +64,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
   ?>
 
   <div class="container">
+    <br>
+    <input class="btn btn-link" name="logWorkoutBtn" type="submit" value="Log a Workout" onclick="location.href='log-workout.php';" />
+    <br>
 
     <div class="row justify-content-center">
     <form action="extra-work.php" method="post">
@@ -74,10 +77,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         <option name="name" value="<?php echo $item['athlete_id']; ?>">
             <?php echo $item['Name']; ?>
         </option>
-        
       <?php endforeach; ?>
       </select>
-      <input class="btn btn-primary" name="selectAthlete" type="submit" value="Select" />
+      <input class="btn btn-primary" name="selectAthlete" type="submit" value="View Athlete" />
     </form>
     
     <div class="row justify-content-center">
