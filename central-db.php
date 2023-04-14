@@ -128,4 +128,65 @@ function getTmrrwWorkout() {
     return $results;
 }
 
+function getExtraWorkouts($athlete_id) {
+    global $db;
+    $query = "SELECT athlete_id, workout_num, dte, mins, workout_type, descr FROM ExtraWork WHERE athlete_id = :athlete_id";
+    // prepare
+     // prepare
+    $statement = $db->prepare($query);
+    $statement->bindValue(':athlete_id', $athlete_id);
+    // execute
+    $statement->execute();
+    $results = $statement->fetchAll(); //fetch() will retrieve only first row fetchAll will retrieve all rows
+    // close cursor
+    $statement->closeCursor();
+    return $results;
+}
+
+function getTotalMins($athlete_id) {
+    global $db;
+    $query = "SELECT SUM(mins) AS total FROM ExtraWork GROUP BY athlete_id HAVING athlete_id = :athlete_id";
+    // prepare
+     // prepare
+    $statement = $db->prepare($query);
+    $statement->bindValue(':athlete_id', $athlete_id);
+    // execute
+    $statement->execute();
+    $results = $statement->fetch(); //fetch() will retrieve only first row fetchAll will retrieve all rows
+    // close cursor
+    $statement->closeCursor();
+    if (!$results) {
+        return array("--");
+    }
+    return $results;
+}
+
+function getAthletes() {
+    global $db;
+    $query = "SELECT CONCAT(first_name, ' ', last_name) AS Name, athlete_id FROM Athlete";
+    // prepare
+    $statement = $db->prepare($query);
+    // execute
+    $statement->execute();
+    $results = $statement->fetchAll(); //fetch() will retrieve only first row fetchAll will retrieve all rows
+    // close cursor
+    $statement->closeCursor();
+    return $results;
+}
+
+function deleteWorkout($athlete_id, $workout_num) {
+    global $db;
+    $query = "DELETE FROM ExtraWork WHERE athlete_id=:athlete_id AND workout_num = :workout_num";
+    // prepare
+     // prepare
+    $statement = $db->prepare($query);
+    $statement->bindValue(':athlete_id', $athlete_id);
+    $statement->bindValue(':workout_num', $workout_num);
+    // execute
+    $statement->execute();
+    $results = $statement->fetch(); //fetch() will retrieve only first row fetchAll will retrieve all rows
+    // close cursor
+    $statement->closeCursor();
+}
+
 ?>

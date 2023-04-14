@@ -51,7 +51,7 @@ $name = getNameC($coach_id); //for welcome message after logging in
 
   <?php
 
-  include("header.html");
+  include("Cheader.html");
 
   ?>
   <div class="container">

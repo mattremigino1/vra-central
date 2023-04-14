@@ -92,12 +92,21 @@ if ($account_created) {
         <input type="number" class="form-control" name="weight" required />
       </div>
       <div class="form-group">
-        <label>Class (1, 2, 3, 4): </label> <br />
-        <input type="text" class="form-control" name="class" required />
+        <label>Class: </label> <br />
+        <select id="clss" name="class">
+            <option value="1">1st years</option>
+            <option value="2">2nd years</option>
+            <option value="3">3rd years</option>
+            <option value="4">4th years</option>
+          </select>
       </div>
       <div class="form-group">
-        <label>Boat Side (S or P): </label>
-        <input type="text" class="form-control" name="boat_side" required />
+        <label>Boat Side: </label>
+        <select id="btside" name="boat_side">
+            <option value="S">Starboard</option>
+            <option value="P">Port</option>
+            <option value="P">Don't Know</option>
+          </select>
       </div>
       <div class="form-group">
         <label>2KPR Minutes: </label>
