@@ -28,16 +28,17 @@ function deleteAthlete($athlete_to_delete) {
         $statement->bindValue(':athlete_to_delete', $athlete_to_delete);
         // execute
         $statement->execute();
+        $results = $statement->fetch();
         // close cursor
         $statement->closeCursor();
 }
 
-function getAthleteByName($athlete_to_update) {
+function getAthleteByName($athlete_id) {
     global $db;
-    $query = "SELECT * FROM Athlete WHERE first_name=:athlete_to_update";
+    $query = "SELECT * FROM Athlete WHERE athlete_id=:athlete_id";
     // prepare
     $statement = $db->prepare($query);
-    $statement->bindValue(':athlete_to_update', $athlete_to_update);
+    $statement->bindValue(':athlete_id', $athlete_id);
     // execute
     $statement->execute();
     $results = $statement->fetchAll(); //fetch() will retrieve only first row fetchAll will retrieve all rows

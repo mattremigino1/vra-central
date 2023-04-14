@@ -1,6 +1,8 @@
 <?php
 require("connect-db.php"); 
 // include("connect-db.php");
+session_start();
+
 if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
 } else {
   header("Location: login.php");
@@ -9,13 +11,16 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
 require("athlete-directory-handler.php");
 $athletes = selectAllAthletes();
 
-if (isset($_POST['submit'])) {
-    $search_name = $_POST['search_name'];
-    $athletes = getAthleteByName($search_name);
-  } else {
-    $athletes = selectAllAthletes();
-  }
-
+require("central-db.php");
+$all_athletes = getAthletes();
+if $_SERVER['REQUEST_METHOD'] == 'POST' {
+    if (!empty($_POST['selectAthlete']) && $_POST['selectAthlete'] == "View Athlete") {
+        $search_name = $_POST['athlete'];
+        $athletes = getAthleteByName($search_name);
+    } else {
+        $athletes = selectAllAthletes();
+    }
+}
 ?>
 
 <!-- 1. create HTML5 doctype -->
@@ -44,17 +49,19 @@ if (isset($_POST['submit'])) {
 
 <!-- Add form to POST to athlete-directory.php and filter by name -->
 
-<div class="container">
-  <form action="athlete-directory.php" method="post">
-    <div class="row justify-content-center">
-      <div class="col-4">
-        <input type="text" class="form-control" name="search_name" placeholder="Search by First Name">
-      </div>
-      <div class="col-2">
-        <input type="submit" class="btn btn-primary" name="submit" value="Search">
-      </div>
-    </div>
-  </form>
+<div class="row justify-content-center">
+    <form action="athlete-directory.php" method="post">
+      <label>Athlete</label>
+      <select name="athlete" class='form-control'>
+      <option value="">--- Select ---</option>
+      <?php foreach ($all_athletes as $item): ?>
+        <option name="name" value="<?php echo $item['athlete_id']; ?>">
+            <?php echo $item['Name']; ?>
+        </option>
+      <?php endforeach; ?>
+      </select>
+      <input class="btn btn-primary" name="selectAthlete" type="submit" value="View Athlete" />
+    </form>
 
 <div class="container">
   <h1>Athlete Directory</h1>  
