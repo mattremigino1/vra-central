@@ -1,6 +1,10 @@
 <?php
 require("connect-db.php"); 
 // include("connect-db.php");
+if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
+} else {
+  header("Location: login.php");
+}
 
 require("athlete-directory-handler.php");
 $athletes = selectAllAthletes();
