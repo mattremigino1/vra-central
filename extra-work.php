@@ -24,6 +24,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
       $displayedAthlete = getName($_POST['athlete'])[0];
       $totalMins = getTotalMins($_POST['athlete'])[0];
     }
+    if (!empty($_POST['deleteBtn']) && $_POST['deleteBtn'] == "Delete") {
+        deleteWorkout($_POST['delete_athid'], $_POST['delete_workoutNum']);
+        $workouts = getExtraWorkouts($_POST['delete_athid']);
+        $displayedAthlete = getName($_POST['delete_athid'])[0];
+        $totalMins = getTotalMins($_POST['delete_athid'])[0];
+      }
 }
 
 
@@ -82,8 +88,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
           <tr style="background-color:#B0B0B0">
             <th>Date</th>
             <th>Minutes</th>
-            <th>Workout Type</th>
+            <th>Type</th>
             <th>Description</th>
+            <th>Delete?</th>
           </tr>
         </thead>
         <?php foreach ($workouts as $item): ?>
@@ -100,6 +107,15 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             <td>
               <?php echo $item['descr']; ?>
             </td>
+            <td>
+              <form action="extra-work.php" method="post">
+                <input type="submit" name="deleteBtn" value="Delete" class="btn btn-danger" />
+                <input type="hidden" name="delete_athid" 
+                       value="<?php echo $item['athlete_id']; ?>"  />
+                <input type="hidden" name="delete_workoutNum" 
+                       value="<?php echo $item['workout_num']; ?>"  />       
+              </form> 
+             </td>  
           </tr>
         <?php endforeach; ?>
       </table>

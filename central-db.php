@@ -130,7 +130,7 @@ function getTmrrwWorkout() {
 
 function getExtraWorkouts($athlete_id) {
     global $db;
-    $query = "SELECT dte, mins, workout_type, descr FROM ExtraWork WHERE athlete_id = :athlete_id";
+    $query = "SELECT athlete_id, workout_num, dte, mins, workout_type, descr FROM ExtraWork WHERE athlete_id = :athlete_id";
     // prepare
      // prepare
     $statement = $db->prepare($query);
@@ -172,6 +172,21 @@ function getAthletes() {
     // close cursor
     $statement->closeCursor();
     return $results;
+}
+
+function deleteWorkout($athlete_id, $workout_num) {
+    global $db;
+    $query = "DELETE FROM ExtraWork WHERE athlete_id=:athlete_id AND workout_num = :workout_num";
+    // prepare
+     // prepare
+    $statement = $db->prepare($query);
+    $statement->bindValue(':athlete_id', $athlete_id);
+    $statement->bindValue(':workout_num', $workout_num);
+    // execute
+    $statement->execute();
+    $results = $statement->fetch(); //fetch() will retrieve only first row fetchAll will retrieve all rows
+    // close cursor
+    $statement->closeCursor();
 }
 
 ?>
