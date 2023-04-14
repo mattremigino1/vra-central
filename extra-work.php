@@ -16,6 +16,7 @@ $name = getName($athlete_id);
 $workouts = getExtraWorkouts($athlete_id);
 $athletes = getAthletes();
 $displayedAthlete = $name[0];
+$displayedAthleteID = $athlete_id;
 $totalMins = getTotalMins($athlete_id)[0];
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -23,12 +24,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
       $workouts = getExtraWorkouts($_POST['athlete']);
       $displayedAthlete = getName($_POST['athlete'])[0];
       $totalMins = getTotalMins($_POST['athlete'])[0];
+      $displayedAthleteID = $_POST['athlete'];
     }
     if (!empty($_POST['deleteBtn']) && $_POST['deleteBtn'] == "Delete") {
         deleteWorkout($_POST['delete_athid'], $_POST['delete_workoutNum']);
         $workouts = getExtraWorkouts($_POST['delete_athid']);
         $displayedAthlete = getName($_POST['delete_athid'])[0];
         $totalMins = getTotalMins($_POST['delete_athid'])[0];
+        $displayedAthleteID = $_POST['delete_athid'];
       }
 }
 
@@ -92,7 +95,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             <th>Minutes</th>
             <th>Type</th>
             <th>Description</th>
+            <?php if ($athlete_id == $displayedAthleteID): ?>
             <th>Delete?</th>
+            <?php endif; ?>
           </tr>
         </thead>
         <?php foreach ($workouts as $item): ?>
@@ -109,6 +114,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             <td>
               <?php echo $item['descr']; ?>
             </td>
+            <?php if ($athlete_id == $displayedAthleteID): ?>
             <td>
               <form action="extra-work.php" method="post">
                 <input type="submit" name="deleteBtn" value="Delete" class="btn btn-danger" />
@@ -117,7 +123,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 <input type="hidden" name="delete_workoutNum" 
                        value="<?php echo $item['workout_num']; ?>"  />       
               </form> 
-             </td>  
+             </td>
+             <?php endif; ?>
           </tr>
         <?php endforeach; ?>
       </table>
