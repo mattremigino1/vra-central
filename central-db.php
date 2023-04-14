@@ -50,6 +50,7 @@ function getSingle() {
     $statement->closeCursor();
     return $results;
 }
+
 function myLineup($athlete_id) {
     global $db;
     $query = "SELECT boat_name, seat FROM RowsIn WHERE athlete_id = :athlete_id";
@@ -73,6 +74,23 @@ function getName($athlete_id) {
     // prepare
     $statement = $db->prepare($query);
     $statement->bindValue(':athlete_id', $athlete_id);
+    // execute
+    $statement->execute();
+    $results = $statement->fetch(); //fetch() will retrieve only first row fetchAll will retrieve all rows
+    // close cursor
+    $statement->closeCursor();
+    if (!$results) {
+        return array("--");
+    }
+    return $results;
+}
+
+function getNameC($coach_id) {
+    global $db;
+    $query = "SELECT CONCAT(first_name, ' ', last_name) AS Name FROM Coach WHERE coach_id = :coach_id";
+    // prepare
+    $statement = $db->prepare($query);
+    $statement->bindValue(':coach_id', $coach_id);
     // execute
     $statement->execute();
     $results = $statement->fetch(); //fetch() will retrieve only first row fetchAll will retrieve all rows
