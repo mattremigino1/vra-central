@@ -71,7 +71,7 @@ session_start();
                 // compare the hashed password with the hash fetched from the database
                 if (password_verify($password, $hash)) {
                     // successfully login, redirect the user to the main page
-                    $_SESSION['loggedin'] = true;
+                    $_SESSION['Cloggedin'] = true;
                     $_SESSION['coach_id'] = $coach_id;
                     header("Location: " . $mainpage);
                 } else {

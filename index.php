@@ -1,6 +1,5 @@
 <?php
 require("connect-db.php");
-// include("connect-db.php");
 
 session_start();
 
@@ -11,7 +10,6 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
 }
 
 require("central-db.php");
-// include("friend-db.php");
 
 $athlete_id = $_SESSION['athlete_id'];
 

@@ -1,19 +1,17 @@
 <?php
 require("connect-db.php");
-// include("connect-db.php");
 
 session_start();
 
 
-if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
+if (isset($_SESSION['Cloggedin']) && $_SESSION['Cloggedin'] == true) {
 } else {
   header("Location: login.php");
 }
 
 require("central-db.php");
-// include("friend-db.php");
 
-$athlete_id = $_SESSION['athlete_id'];
+$coach_id = $_SESSION['coach_id'];
 
 $todayWorkout = getTodayWorkout();
 $tmrrwWorkout = getTmrrwWorkout();
@@ -21,8 +19,7 @@ $eights = getEights();
 $fours = getFours();
 $twoman = getTwoMan();
 $single = getSingle();
-$name = getName($athlete_id); //for welcome message after logging in
-$myLineup = myLineup($athlete_id);
+$name = getNameC($coach_id); //for welcome message after logging in
 
 
 
@@ -67,8 +64,8 @@ $myLineup = myLineup($athlete_id);
     </h1>
     <h4>
       <?php
-      echo "Athlete ID: ";
-      echo $athlete_id;
+      echo "Coach ID: ";
+      echo $coach_id;
       ?>
     </h4>
     <br>
@@ -132,23 +129,6 @@ $myLineup = myLineup($athlete_id);
     <br>
     <div class="row justify-content-center">
       <h2>Lineups</h2> </br>
-      <div class="row justify-content-center">
-        <h3>Your Boat and Seat: </h3>
-        <table class="w3-table w3-bordered w3-card-4 center" style="width:70%">
-          <thead>
-            <tr style="background-color:#B0B0B0">
-              <th>Boat</th>
-              <th>Seat</th>
-            </tr>
-          </thead>
-          <td>
-            <?php echo $myLineup[0]; ?>
-          </td>
-          <td>
-            <?php echo $myLineup[1]; ?>
-          </td>
-        </table>
-      </div>
       <div class="row justify-content-center">
         <h3>Eights</h3>
         <table class="w3-table w3-bordered w3-card-4 center" style="width:70%">
