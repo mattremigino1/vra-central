@@ -68,6 +68,10 @@ if ($account_created) {
         <input type="text" class="form-control" name="last_name" required />
       </div>
       <div class="form-group">
+        <label>Email: </label>
+        <input type="text" class="form-control" name="emailaddr" required />
+      </div>
+      <div class="form-group">
         <label>Phone Number: </label>
         <input type="tel" class="form-control" name="phone" required />
       </div>

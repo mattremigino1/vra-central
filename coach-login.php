@@ -10,7 +10,7 @@ session_start();
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge"> <!-- required to handle IE -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>VRA Login</title>
+    <title>VRA Coach Login</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <link rel="stylesheet" href="main.css" />
@@ -32,7 +32,7 @@ session_start();
 
     <div class="login-form-container">
         <h1 class='form-title'>VRA Coach Login</h1>
-        <form action="login.php" method="post" class="login-form">
+        <form action="coach-login.php" method="post" class="login-form">
             <div class="form-group">
                 <label>Coach ID: </label>
                 <input type="text" class="form-control" name="coachID" autofocus required />

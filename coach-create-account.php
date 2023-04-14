@@ -5,17 +5,15 @@ require("connect-db.php");
 $account_created = False;
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-  if (!empty($_POST['createAcctBtn']) && $_POST['createAcctBtn'] == "Create Account") {
+  if (!empty($_POST['createCoachAcctBtn']) && $_POST['createCoachAcctBtn'] == "Create Coach Account") {
     $account_created = createAccount(
       trim($_POST['first_name']),
       trim($_POST['last_name']),
       trim($_POST['emailaddr']),
       trim($_POST['phone']),
-      trim($_POST['position']),
-      trim($_POST['pwd']),
-      trim($_POST['pwd_confirm'])
+      trim($_POST['position'])
     );
-    $coacb_id = getCoachID();
+    $coach_id = getCoachID();
   }
 }
 if ($account_created) {
@@ -35,7 +33,7 @@ if ($account_created) {
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge"> <!-- required to handle IE -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Create Account</title>
+  <title>Create Coach Account</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
   <link rel="stylesheet" href="main.css" />
@@ -45,13 +43,13 @@ if ($account_created) {
 
   <!-- <?php include('header.html') ?> -->
   <div class="form-container">
-    <h1>Create Your VRA Account</h1>
+    <h1>Create Your VRA Coach Account</h1>
 
     <!-- what are form inputs -->
     <!-- who will handle the form submission -->
     <!-- how are the request sent -->
 
-    <form action="create-account.php" method="post" class="create-account-form">
+    <form action="coach-create-account.php" method="post" class="create-account-form">
       <div class="form-group">
         <label for="fn">First Name: </label>
         <input type="text" class="form-control" name="first_name" id="fn" autofocus required />
@@ -61,21 +59,18 @@ if ($account_created) {
         <input type="text" class="form-control" name="last_name" required />
       </div>
       <div class="form-group">
+        <label>Email: </label>
+        <input type="text" class="form-control" name="emailaddr" required />
+      </div>
+      <div class="form-group">
         <label>Phone Number: </label>
         <input type="tel" class="form-control" name="phone" required />
       </div>
       <div class="form-group">
         <label>Position: </label>
         <input type="text" class="form-control" name="position" required />
-      <div class="form-group">
-        <label>Password: </label>
-        <input type="password" class="form-control" name="pwd" required />
       </div>
-      <div class="form-group">
-        <label>Confirm Password: </label>
-        <input type="password" class="form-control" name="pwd_confirm" required />
-      </div>
-      <input type="submit" name="createAcctBtn" value="Create Account" class="btn btn-primary" />
+      <input type="submit" name="createCoachAcctBtn" value="Create Coach Account" class="btn btn-primary" />
     </form>
     <div class="error-container"></div>
   </div>
