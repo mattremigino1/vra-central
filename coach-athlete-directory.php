@@ -96,13 +96,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
              <td><?php echo $item['last_name']; ?></td>  
              <td><?php echo $item['email']; ?></td>
              <td><?php echo $item['phone_number']; ?></td>
-             <td><?php echo $item['dob']; ?></td>
+             <td><?php echo $item['date_of_birth']; ?></td>
              <td><?php echo $item['grad_year']; ?></td>
              <td><?php echo $item['height']; ?></td>
-             <td><?php echo $item['athletic_weight']; ?></td>
+             <td><?php echo $item['ath_weight']; ?></td>
              <td><?php echo $item['class']; ?></td>
              <td><?php echo $item['boat_side']; ?></td>
-             <td><?php echo $item['2k_pr']; ?></td>
+             <td><?php echo $item['twoKPR']; ?></td>
              <td><?php echo $item['g8']; ?></td>
              <td><?php echo $item['age']; ?></td>            
             <td>
