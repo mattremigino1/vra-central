@@ -13,13 +13,11 @@ $athletes = selectAllAthletes();
 
 require("central-db.php");
 $all_athletes = getAthletes();
-if $_SERVER['REQUEST_METHOD'] == 'POST' {
-    if (!empty($_POST['selectAthlete']) && $_POST['selectAthlete'] == "View Athlete") {
-        $search_name = $_POST['athlete'];
-        $athletes = getAthleteByName($search_name);
-    } else {
-        $athletes = selectAllAthletes();
-    }
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+  if (!empty($_POST['selectAthlete']) && $_POST['selectAthlete'] == "View Athlete") {
+      $search_name = $_POST['athlete'];
+      $athletes = getAthleteByName($search_name);
+  }
 }
 ?>
 
