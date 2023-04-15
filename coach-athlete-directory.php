@@ -34,7 +34,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
   
   <!-- 2. include meta tag to ensure proper rendering and touch zooming -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="author" content="your name">
+  <meta name="author" content="Matt Remigino, Alex Becker, Maajid Husain, Yusuf Cetin">
   <meta name="description" content="include some description about your page">  
     
   <title>VRA Central Athlete Directory</title>
