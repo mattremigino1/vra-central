@@ -67,13 +67,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
   ?>
 
   <div class="container">
-    <br>
-    <input class="btn btn-link" name="logWorkoutBtn" type="submit" value="Log a Workout" onclick="location.href='log-workout.php';" />
-    <br>
-
     <div class="row justify-content-center">
     <form action="extra-work.php" method="post">
-      <label>Athlete</label>
+      <label><b>Athlete:</b></label>
       <select name="athlete" class='form-control'>
       <option value="">--- Select ---</option>
       <?php foreach ($athletes as $item): ?>
@@ -87,7 +83,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     
     <div class="row justify-content-center">
        <h3>Workouts for <?php echo $displayedAthlete ?></h3>
-       <h4>Total Minutes: <?php echo $totalMins ?></h4>
+       <h5>Total Minutes: <?php echo $totalMins ?></h5>
       <table class="w3-table w3-bordered w3-card-4 center" style="width:70%">
         <thead>
           <tr style="background-color:#B0B0B0">
