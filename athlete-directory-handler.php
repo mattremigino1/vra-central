@@ -17,22 +17,6 @@ function selectAllAthletes() {
     return $results;
 }
 
-function deleteAthlete($athlete_to_delete) {
-
-        // db
-        global $db;
-        // query
-        $query = "DELETE FROM Athlete WHERE athlete_id=:athlete_to_delete";
-        // prepare
-        $statement = $db->prepare($query);
-        $statement->bindValue(':athlete_to_delete', $athlete_to_delete);
-        // execute
-        $statement->execute();
-        $results = $statement->fetch();
-        // close cursor
-        $statement->closeCursor();
-}
-
 function getAthleteByName($athlete_id) {
     global $db;
     $query = "SELECT * FROM Athlete WHERE athlete_id=:athlete_id";
