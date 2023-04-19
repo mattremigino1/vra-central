@@ -44,7 +44,7 @@ $password = "VRACoachPassword1234";
 $hashed_password = password_hash($password, PASSWORD_DEFAULT);
 
 // insert the hashed password into the passwords table
-$sql = "INSERT INTO CoachPassword (coach_id, psswrd) VALUES (:coach_id, :password_hash)";
+$sql = "INSERT INTO CoachPasswords (coach_id, psswrd) VALUES (:coach_id, :password_hash)";
 $stmt = $db->prepare($sql);
 $stmt->bindValue(':coach_id', $coach_id);
 $stmt->bindValue(':password_hash', $hashed_password);

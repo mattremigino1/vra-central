@@ -3,7 +3,7 @@ require("connect-db.php");
 // include("connect-db.php");
 session_start();
 
-if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
+if ((isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true)||isset($_SESSION['Cloggedin']) && $_SESSION['Cloggedin'] == true) {
 } else {
   header("Location: login.php");
 }

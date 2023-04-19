@@ -56,7 +56,7 @@ session_start();
             $password = htmlspecialchars($_POST['pwd']);
 
             // prepare a query to fetch the hashed password for the given username
-            $sql = "SELECT psswrd FROM CoachPassword WHERE coach_id = :coach_id";
+            $sql = "SELECT psswrd FROM CoachPasswords WHERE coach_id = :coach_id";
             $stmt = $db->prepare($sql);
             $stmt->bindValue(':coach_id', $coach_id);
             $stmt->execute();

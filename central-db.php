@@ -184,7 +184,6 @@ function deleteWorkout($athlete_id, $workout_num) {
     $statement->bindValue(':workout_num', $workout_num);
     // execute
     $statement->execute();
-    $results = $statement->fetch(); //fetch() will retrieve only first row fetchAll will retrieve all rows
     // close cursor
     $statement->closeCursor();
 }
