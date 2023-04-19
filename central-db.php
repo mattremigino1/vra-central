@@ -188,4 +188,17 @@ function deleteWorkout($athlete_id, $workout_num) {
     $statement->closeCursor();
 }
 
+function getBoats() {
+    global $db;
+    $query = "SELECT boat_name AS Name, num_seats FROM Boats";
+    // prepare
+    $statement = $db->prepare($query);
+    // execute
+    $statement->execute();
+    $results = $statement->fetchAll(); //fetch() will retrieve only first row fetchAll will retrieve all rows
+    // close cursor
+    $statement->closeCursor();
+    return $results;
+}
+
 ?>
