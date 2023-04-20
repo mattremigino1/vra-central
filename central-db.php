@@ -201,4 +201,53 @@ function getBoats() {
     return $results;
 }
 
+function getBoatLineup($boat_name) {
+    global $db;
+    $table = "";
+
+    // get number of seats
+    $query = "SELECT num_seats FROM Boats WHERE boat_name = :boat_name";
+    // prepare
+    $statement = $db->prepare($query);
+    $statement->bindValue(':boat_name', $boat_name);
+    // execute
+    $statement->execute();
+    $seat_num = $statement->fetch()[0];
+    $statement->closeCursor();
+
+    if ($seat_num == "8") {
+        $table = "EightMan";
+    } else if ($seat_num == "4") {
+        $table = "FourMan";
+    } else if ($seat_num == "2") {
+        $table = "TwoMan";
+    } else {
+        $table = "Single";
+    }
+    $query = "SELECT * FROM $table WHERE boat_name = :boat_name";
+    // prepare
+    $statement = $db->prepare($query);
+    $statement->bindValue(':boat_name', $boat_name);
+    // execute
+    $statement->execute();
+    $results = $statement->fetch();
+    // close cursor
+    $statement->closeCursor();
+    return $results;
+}
+
+function getBoatInfo($boat_name) {
+    global $db;
+    $query = "SELECT boat_name AS Name, num_seats FROM Boats WHERE boat_name = :boat_name";
+    // prepare
+    $statement = $db->prepare($query);
+    $statement->bindValue(':boat_name', $boat_name);
+    // execute
+    $statement->execute();
+    $results = $statement->fetchAll(); //fetch() will retrieve only first row fetchAll will retrieve all rows
+    // close cursor
+    $statement->closeCursor();
+    return $results;
+}
+
 ?>

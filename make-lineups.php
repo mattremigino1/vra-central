@@ -9,33 +9,30 @@ if (isset($_SESSION['Cloggedin']) && $_SESSION['Cloggedin'] == true) {
   header("Location: login.php");
 }
 
-$athlete_id = 1;
 $coach_id = $_SESSION['coach_id'];
-$name = getName($athlete_id); 
-$workouts = getExtraWorkouts($athlete_id);
 
-$displayedAthleteID = $athlete_id;
-$totalMins = getTotalMins($athlete_id)[0];
 
 $boats = getBoats();
 $displayedBoat = "";
+$seats = "";
+$boatInfo = "";
+$lineup = "";
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    if (!empty($_POST['selectAthlete']) && $_POST['selectAthlete'] == "View Athlete") {
-      $workouts = getExtraWorkouts($_POST['athlete']);
-      $displayedAthlete = getName($_POST['athlete'])[0];
-      $totalMins = getTotalMins($_POST['athlete'])[0];
-      $displayedAthleteID = $_POST['athlete'];
+    if (!empty($_POST['selectBoat']) && $_POST['selectBoat'] == "View Boat") {
+      $lineup = getBoatLineup($_POST['boat']);
+      $boatInfo = getBoatInfo($_POST['boat']);
+      $seats = $boatInfo[0]['num_seats'];
+      $displayedBoat = $boatInfo[0]['Name'];
     }
-    if (!empty($_POST['deleteBtn']) && $_POST['deleteBtn'] == "Delete") {
-        deleteWorkout($_POST['delete_athid'], $_POST['delete_workoutNum']);
-        $workouts = getExtraWorkouts($_POST['delete_athid']);
-        $displayedAthlete = getName($_POST['delete_athid'])[0];
-        $totalMins = getTotalMins($_POST['delete_athid'])[0];
-        $displayedAthleteID = $_POST['delete_athid'];
-      }
+    // if (!empty($_POST['deleteBtn']) && $_POST['deleteBtn'] == "Delete") {
+    //     deleteWorkout($_POST['delete_athid'], $_POST['delete_workoutNum']);
+    //     $workouts = getExtraWorkouts($_POST['delete_athid']);
+    //     $displayedAthlete = getName($_POST['delete_athid'])[0];
+    //     $totalMins = getTotalMins($_POST['delete_athid'])[0];
+    //     $displayedAthleteID = $_POST['delete_athid'];
+    //   }
 }
-
 ?>
 
 <!-- 1. create HTML5 doctype -->
@@ -73,7 +70,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
       <select name="boat" class='form-control'>
       <option value="">--- Select ---</option>
       <?php foreach ($boats as $item): ?>
-        <option name="name" value="<?php echo $item['Name']; ?>">
+        <option value="<?php echo $item['Name']; ?>">
             <?php echo $item['Name']; ?>
         </option>
       <?php endforeach; ?>
@@ -86,80 +83,140 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         <h3>Please select a boat</h3>
         <?php else: ?>
        <h3><?php echo $displayedBoat ?></h3>
+       <?php if ($seats == "8"): ?>
       <table class="w3-table w3-bordered w3-card-4 center" style="width:70%">
-          <tr style="background-color:#B0B0B0">
-            <th>B</th>
-            <td></td>
-            <td></td>
-          </tr>
-          <tr style="background-color:#B0B0B0">
-            <th>2</th>
-            <td></td>
-            <td></td>
-          </tr>
-          <tr style="background-color:#B0B0B0">
-            <th>3</th>
-            <td></td>
-            <td></td>
-          </tr>
-          <tr style="background-color:#B0B0B0">
-            <th>4</th>
-            <td></td>
-            <td></td>
-          </tr>
-          <tr style="background-color:#B0B0B0">
-            <th>5</th>
-            <td></td>
-            <td></td>
-          </tr>
-          <tr style="background-color:#B0B0B0">
-            <th>6</th>
-            <td></td>
-            <td></td>
-          </tr>
-          <tr style="background-color:#B0B0B0">
-            <th>7</th>
-            <td></td>
-            <td></td>
-          </tr>
-          <tr style="background-color:#B0B0B0">
-            <th>S</th>
-            <td></td>
-            <td></td>
-          </tr>
-          <tr style="background-color:#B0B0B0">
-            <th>C</th>
-            <td></td>
-            <td></td>
-          </tr>
-        <?php foreach ($workouts as $item): ?>
           <tr>
-            <td>
-              <?php echo $item['dte']; ?>
-            </td>
-            <td>
-              <?php echo $item['mins']; ?>
-            </td>
-            <td>
-              <?php echo $item['workout_type']; ?>
-            </td>
-            <td>
-              <?php echo $item['descr']; ?>
-            </td>
-            <?php if ($athlete_id == $displayedAthleteID): ?>
-            <td>
-              <form action="extra-work.php" method="post">
-                <input type="submit" name="deleteBtn" value="Delete" class="btn btn-danger" />
-                <input type="hidden" name="delete_athid" 
-                       value="<?php echo $item['athlete_id']; ?>"  />
-                <input type="hidden" name="delete_workoutNum" 
-                       value="<?php echo $item['workout_num']; ?>"  />       
-              </form> 
-             </td>
-             <?php endif; ?>
+            <th style="background-color:#B0B0B0">B</th>
+            <td><?php echo getName($lineup[4])[0] ?></td>
+            <td></td>
           </tr>
-        <?php endforeach; ?>
+          <tr>
+            <th style="background-color:#B0B0B0">2</th>
+            <td><?php echo getName($lineup[5])[0] ?></td>
+            <td></td>
+          </tr>
+          <tr>
+            <th style="background-color:#B0B0B0">3</th>
+            <td><?php echo getName($lineup[6])[0] ?></td>
+            <td></td>
+          </tr>
+          <tr>
+            <th style="background-color:#B0B0B0">4</th>
+            <td><?php echo getName($lineup[7])[0] ?></td>
+            <td></td>
+          </tr>
+          <tr>
+            <th style="background-color:#B0B0B0">5</th>
+            <td><?php echo getName($lineup[8])[0] ?></td>
+            <td></td>
+          </tr>
+          <tr>
+            <th style="background-color:#B0B0B0">6</th>
+            <td><?php echo getName($lineup[9])[0] ?></td>
+            <td></td>
+          </tr>
+          <tr>
+            <th style="background-color:#B0B0B0">7</th>
+            <td><?php echo getName($lineup[10])[0] ?></td>
+            <td></td>
+          </tr>
+          <tr>
+            <th style="background-color:#B0B0B0">S</th>
+            <td><?php echo getName($lineup[11])[0] ?></td>
+            <td></td>
+          </tr>
+          <tr>
+            <th style="background-color:#B0B0B0">C</th>
+            <td><?php echo getName($lineup[3])[0] ?></td>
+            <td></td>
+          </tr>
+          <tr>
+            <th style="background-color:#B0B0B0">Oars</th>
+            <td><?php echo $lineup[1] ?></td>
+            <td></td>
+          </tr>
+          <tr>
+            <th style="background-color:#B0B0B0">Rig</th>
+            <td><?php echo $lineup[2] ?></td>
+            <td></td>
+          </tr>
       </table>
+      <?php elseif ($seats == "4"): ?>
+        <table class="w3-table w3-bordered w3-card-4 center" style="width:70%">
+          <tr>
+            <th style="background-color:#B0B0B0">B</th>
+            <td><?php echo getName($lineup[4])[0] ?></td>
+            <td></td>
+          </tr>
+          <tr>
+            <th style="background-color:#B0B0B0">2</th>
+            <td><?php echo getName($lineup[5])[0] ?></td>
+            <td></td>
+          </tr>
+          <tr>
+            <th style="background-color:#B0B0B0">3</th>
+            <td><?php echo getName($lineup[6])[0] ?></td>
+            <td></td>
+          </tr>
+          <tr>
+            <th style="background-color:#B0B0B0">S</th>
+            <td><?php echo getName($lineup[7])[0] ?></td>
+            <td></td>
+          </tr>
+          <tr>
+            <th style="background-color:#B0B0B0">C</th>
+            <td><?php echo getName($lineup[3])[0] ?></td>
+            <td></td>
+          </tr>
+          <tr>
+            <th style="background-color:#B0B0B0">Oars</th>
+            <td><?php echo $lineup[1] ?></td>
+            <td></td>
+          </tr>
+          <tr>
+            <th style="background-color:#B0B0B0">Rig</th>
+            <td><?php echo $lineup[2] ?></td>
+            <td></td>
+          </tr>
+        </table>
+      <?php elseif ($seats == "2"): ?>
+        <table class="w3-table w3-bordered w3-card-4 center" style="width:70%">
+          <tr>
+            <th style="background-color:#B0B0B0">B</th>
+            <td><?php echo getName($lineup[3])[0] ?></td>
+            <td></td>
+          </tr>
+          <tr>
+            <th style="background-color:#B0B0B0">S</th>
+            <td><?php echo getName($lineup[4])[0] ?></td>
+            <td></td>
+          </tr>
+          <tr>
+            <th style="background-color:#B0B0B0">Oars</th>
+            <td><?php echo $lineup[1] ?></td>
+            <td></td>
+          </tr>
+          <tr>
+            <th style="background-color:#B0B0B0">Rig</th>
+            <td><?php echo $lineup[2] ?></td>
+            <td></td>
+          </tr>
+        </table>
+      <?php else: ?>
+        <table class="w3-table w3-bordered w3-card-4 center" style="width:70%">
+          <tr>
+            <th style="background-color:#B0B0B0">1</th>
+            <td><?php echo getName($lineup[2])[0] ?></td>
+            <td></td>
+          </tr>
+            <th style="background-color:#B0B0B0">Oars</th>
+            <td><?php echo $lineup[1] ?></td>
+            <td></td>
+          </tr>
+        </table>
+
+      <?php endif; ?>
+
       <?php endif; ?>
     </div>
       
