@@ -69,7 +69,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
   <div class="container">
     <div class="row justify-content-center">
-    <form action="extra-work.php" method="post">
+    <form action="coach-extra-work.php" method="post">
       <label><b>Athlete:</b></label>
       <select name="athlete" class='form-control'>
       <option value="">--- Select ---</option>
@@ -92,9 +92,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             <th>Minutes</th>
             <th>Type</th>
             <th>Description</th>
-            <?php if ($athlete_id == $displayedAthleteID): ?>
             <th>Delete?</th>
-            <?php endif; ?>
           </tr>
         </thead>
         <?php foreach ($workouts as $item): ?>
@@ -111,9 +109,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             <td>
               <?php echo $item['descr']; ?>
             </td>
-            <?php if ($athlete_id == $displayedAthleteID): ?>
             <td>
-              <form action="extra-work.php" method="post">
+              <form action="coach-extra-work.php" method="post">
                 <input type="submit" name="deleteBtn" value="Delete" class="btn btn-danger" />
                 <input type="hidden" name="delete_athid" 
                        value="<?php echo $item['athlete_id']; ?>"  />
@@ -121,7 +118,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                        value="<?php echo $item['workout_num']; ?>"  />       
               </form> 
              </td>
-             <?php endif; ?>
           </tr>
         <?php endforeach; ?>
       </table>

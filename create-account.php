@@ -105,7 +105,8 @@ if ($account_created) {
         <select id="btside" name="boat_side">
             <option value="S">Starboard</option>
             <option value="P">Port</option>
-            <option value="P">Don't Know</option>
+            <option value="S/P">Port/Starboard</option>
+            <option value="S/P">Don't Know</option>
           </select>
       </div>
       <div class="form-group">
