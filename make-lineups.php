@@ -33,6 +33,27 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
       createEightLineup($displayedBoat, $_POST['cox'], $_POST['stroke'], $_POST['seven'], $_POST['six'], $_POST['five'], $_POST['four'], $_POST['three'], $_POST['two'], $_POST['bow'], $_POST['oars'], $_POST['rig']);
       $lineup = getBoatLineup($_POST['theBoat']);
     }
+    if (!empty($_POST['lineup4']) && $_POST['lineup4'] == "Finalize Lineup") {
+      $boatInfo = getBoatInfo($_POST['theBoat']);
+      $seats = $boatInfo[0]['num_seats'];
+      $displayedBoat = $boatInfo[0]['Name'];
+      createFourLineup($displayedBoat, $_POST['cox'], $_POST['stroke'], $_POST['three'], $_POST['two'], $_POST['bow'], $_POST['oars'], $_POST['rig']);
+      $lineup = getBoatLineup($_POST['theBoat']);
+    }
+    if (!empty($_POST['lineup2']) && $_POST['lineup2'] == "Finalize Lineup") {
+      $boatInfo = getBoatInfo($_POST['theBoat']);
+      $seats = $boatInfo[0]['num_seats'];
+      $displayedBoat = $boatInfo[0]['Name'];
+      createTwoLineup($displayedBoat, $_POST['stroke'], $_POST['bow'], $_POST['oars'], $_POST['rig']);
+      $lineup = getBoatLineup($_POST['theBoat']);
+    }
+    if (!empty($_POST['lineup1']) && $_POST['lineup1'] == "Finalize Lineup") {
+      $boatInfo = getBoatInfo($_POST['theBoat']);
+      $seats = $boatInfo[0]['num_seats'];
+      $displayedBoat = $boatInfo[0]['Name'];
+      createSingleLineup($displayedBoat, $_POST['stroke'], $_POST['oars']);
+      $lineup = getBoatLineup($_POST['theBoat']);
+    }
 }
 ?>
 

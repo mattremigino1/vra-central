@@ -292,6 +292,62 @@ function createEightLineup($boat, $cox, $stroke, $seven, $six, $five, $four, $th
 
 }
 
+function createFourLineup($boat, $cox, $stroke, $three, $two, $bow, $oars, $rig) {
+    global $db;
+
+    changeSeat($boat, $cox, "0");
+    changeSeat($boat, $four, "4");
+    changeSeat($boat, $three, "3");
+    changeSeat($boat, $two, "2");
+    changeSeat($boat, $bow, "1");
+
+    $query = "UPDATE EightMan SET oars=:oars, rigging=:rig WHERE boat_name = :boat";
+    $statement = $db->prepare($query);
+    $statement->bindValue(':boat', $boat);
+    $statement->bindValue(':oars', $oars);
+    $statement->bindValue(':rig', $rig);
+    // execute
+    $statement->execute();
+    // close cursor
+    $statement->closeCursor();
+
+}
+
+function createTwoLineup($boat, $stroke, $bow, $oars, $rig) {
+    global $db;
+
+    changeSeat($boat, $two, "2");
+    changeSeat($boat, $bow, "1");
+
+    $query = "UPDATE EightMan SET oars=:oars, rigging=:rig WHERE boat_name = :boat";
+    $statement = $db->prepare($query);
+    $statement->bindValue(':boat', $boat);
+    $statement->bindValue(':oars', $oars);
+    $statement->bindValue(':rig', $rig);
+    // execute
+    $statement->execute();
+    // close cursor
+    $statement->closeCursor();
+
+}
+
+function createSingleLineup($boat, $stroke, $oars) {
+    global $db;
+
+    changeSeat($boat, $two, "2");
+    changeSeat($boat, $bow, "1");
+
+    $query = "UPDATE EightMan SET oars=:oars, rigging=:rig WHERE boat_name = :boat";
+    $statement = $db->prepare($query);
+    $statement->bindValue(':boat', $boat);
+    $statement->bindValue(':oars', $oars);
+    $statement->bindValue(':rig', $rig);
+    // execute
+    $statement->execute();
+    // close cursor
+    $statement->closeCursor();
+}
+
 function changeSeat($boat, $athlete_id, $seat) {
     global $db;
     // remove the person currentlty in that seat of the boat
@@ -304,6 +360,16 @@ function changeSeat($boat, $athlete_id, $seat) {
     // close cursor
     $statement->closeCursor();
 
+    // remove the athlete from the lineup they are currently in
+    $query = "DELETE FROM RowsIn WHERE athlete_id = :athlete_id";
+    $statement = $db->prepare($query);
+    $statement->bindValue(':athlete_id', $athlete_id);
+    // execute
+    $statement->execute();
+    // close cursor
+    $statement->closeCursor();
+
+    // add the athlete to the new lineup
     $query = "INSERT INTO RowsIn VALUES (:athlete_id, :boat, :seat)";
     $statement = $db->prepare($query);
     $statement->bindValue(':athlete_id', $athlete_id);
