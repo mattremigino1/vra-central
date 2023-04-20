@@ -296,12 +296,12 @@ function createFourLineup($boat, $cox, $stroke, $three, $two, $bow, $oars, $rig)
     global $db;
 
     changeSeat($boat, $cox, "0");
-    changeSeat($boat, $four, "4");
+    changeSeat($boat, $stroke, "4");
     changeSeat($boat, $three, "3");
     changeSeat($boat, $two, "2");
     changeSeat($boat, $bow, "1");
 
-    $query = "UPDATE EightMan SET oars=:oars, rigging=:rig WHERE boat_name = :boat";
+    $query = "UPDATE FourMan SET oars=:oars, rigging=:rig WHERE boat_name = :boat";
     $statement = $db->prepare($query);
     $statement->bindValue(':boat', $boat);
     $statement->bindValue(':oars', $oars);
@@ -316,10 +316,10 @@ function createFourLineup($boat, $cox, $stroke, $three, $two, $bow, $oars, $rig)
 function createTwoLineup($boat, $stroke, $bow, $oars, $rig) {
     global $db;
 
-    changeSeat($boat, $two, "2");
+    changeSeat($boat, $stroke, "2");
     changeSeat($boat, $bow, "1");
 
-    $query = "UPDATE EightMan SET oars=:oars, rigging=:rig WHERE boat_name = :boat";
+    $query = "UPDATE TwoMan SET oars=:oars, rigging=:rig WHERE boat_name = :boat";
     $statement = $db->prepare($query);
     $statement->bindValue(':boat', $boat);
     $statement->bindValue(':oars', $oars);
@@ -334,14 +334,12 @@ function createTwoLineup($boat, $stroke, $bow, $oars, $rig) {
 function createSingleLineup($boat, $stroke, $oars) {
     global $db;
 
-    changeSeat($boat, $two, "2");
-    changeSeat($boat, $bow, "1");
+    changeSeat($boat, $stroke, "1");
 
-    $query = "UPDATE EightMan SET oars=:oars, rigging=:rig WHERE boat_name = :boat";
+    $query = "UPDATE Single SET oars=:oars WHERE boat_name = :boat";
     $statement = $db->prepare($query);
     $statement->bindValue(':boat', $boat);
     $statement->bindValue(':oars', $oars);
-    $statement->bindValue(':rig', $rig);
     // execute
     $statement->execute();
     // close cursor

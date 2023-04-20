@@ -119,8 +119,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                   </option>
                   <?php endforeach; ?>
                   <option value="NULL">--</option>
-                </select>
-                
+                </select>  
             </td>
           </tr>
           <tr>
@@ -254,78 +253,168 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
       <input class="btn btn-primary" type="submit" value="Finalize Lineup" name="lineup8" form="lineup-form8" style="width:70%"></input>
       <?php elseif ($seats == "4"): ?>
         <table class="w3-table w3-bordered w3-card-4 center" style="width:70%">
-          <tr>
+        <tr>
             <th style="background-color:#B0B0B0">B</th>
-            <td><?php echo getName($lineup[4])[0] ?></td>
-            <td></td>
+            <td>
+              <form id="lineup-form4" action="make-lineups.php" method="post">
+                <select name="bow" class='form-control'>
+                  <option value="<?php echo $lineup[3] ?>"><?php echo getName($lineup[3])[0] ?></option>
+                  <?php foreach ($athletes as $item): ?>
+                  <option value="<?php echo $item['athlete_id']; ?>">
+                    <?php echo $item['Name']; ?>
+                  </option>
+                  <?php endforeach; ?>
+                  <option value="NULL">--</option>
+                </select>  
+            </td>
           </tr>
           <tr>
             <th style="background-color:#B0B0B0">2</th>
-            <td><?php echo getName($lineup[5])[0] ?></td>
-            <td></td>
+            <td>
+                <select name="two" class='form-control'>
+                  <option value="<?php echo $lineup[4] ?>"><?php echo getName($lineup[4])[0]; ?></option>
+                  <?php foreach ($athletes as $item): ?>
+                  <option value="<?php echo $item['athlete_id']; ?>">
+                    <?php echo $item['Name']; ?>
+                  </option>
+                  <?php endforeach; ?>
+                  <option value="NULL">--</option>
+                </select>
+            </td>
           </tr>
           <tr>
             <th style="background-color:#B0B0B0">3</th>
-            <td><?php echo getName($lineup[6])[0] ?></td>
-            <td></td>
+            <td>
+                <select name="three" class='form-control'>
+                  <option value="<?php echo $lineup[5] ?>"><?php echo getName($lineup[5])[0] ?></option>
+                  <?php foreach ($athletes as $item): ?>
+                  <option value="<?php echo $item['athlete_id']; ?>">
+                    <?php echo $item['Name']; ?>
+                  </option>
+                  <?php endforeach; ?>
+                  <option value="NULL">--</option>
+                </select>
+            </td>
           </tr>
           <tr>
             <th style="background-color:#B0B0B0">S</th>
-            <td><?php echo getName($lineup[7])[0] ?></td>
-            <td></td>
+            <td>
+                <select name="stroke" class='form-control'>
+                  <option value="<?php echo $lineup[6] ?>"><?php echo getName($lineup[6])[0] ?></option>
+                  <?php foreach ($athletes as $item): ?>
+                  <option value="<?php echo $item['athlete_id']; ?>">
+                    <?php echo $item['Name']; ?>
+                  </option>
+                  <?php endforeach; ?>
+                  <option value="NULL">--</option>
+                </select>
+            </td>
           </tr>
           <tr>
             <th style="background-color:#B0B0B0">C</th>
-            <td><?php echo getName($lineup[3])[0] ?></td>
-            <td></td>
+            <td>
+                <select name="cox" class='form-control'>
+                  <option value="<?php echo $lineup[2] ?>"><?php echo getName($lineup[2])[0] ?></option>
+                  <?php foreach ($athletes as $item): ?>
+                  <option value="<?php echo $item['athlete_id']; ?>">
+                    <?php echo $item['Name']; ?>
+                  </option>
+                  <?php endforeach; ?>
+                  <option value="NULL">--</option>
+                </select>
+            </td>
           </tr>
           <tr>
             <th style="background-color:#B0B0B0">Oars</th>
-            <td><?php echo $lineup[1] ?></td>
-            <td></td>
+            <td>
+                <input value="<?php echo $lineup[1] ?>" type="text" class="form-control" name="oars" required />
+            </td>
           </tr>
           <tr>
             <th style="background-color:#B0B0B0">Rig</th>
-            <td><?php echo $lineup[2] ?></td>
-            <td></td>
+            <td>
+                <input value="<?php echo $lineup[7] ?>" type="text" class="form-control" name="rig" required/>
+                <input value="<?php echo $displayedBoat ?>" type="hidden" name="theBoat" />
+                <input value="<?php echo $seats ?>" type="hidden" name="seatNumber" />
+              </form>
+            </td>
           </tr>
         </table>
+        <input class="btn btn-primary" type="submit" value="Finalize Lineup" name="lineup4" form="lineup-form4" style="width:70%"></input>
       <?php elseif ($seats == "2"): ?>
         <table class="w3-table w3-bordered w3-card-4 center" style="width:70%">
-          <tr>
+        <tr>
             <th style="background-color:#B0B0B0">B</th>
-            <td><?php echo getName($lineup[3])[0] ?></td>
-            <td></td>
+            <td>
+              <form id="lineup-form2" action="make-lineups.php" method="post">
+                <select name="bow" class='form-control'>
+                  <option value="<?php echo $lineup[2] ?>"><?php echo getName($lineup[2])[0] ?></option>
+                  <?php foreach ($athletes as $item): ?>
+                  <option value="<?php echo $item['athlete_id']; ?>">
+                    <?php echo $item['Name']; ?>
+                  </option>
+                  <?php endforeach; ?>
+                  <option value="NULL">--</option>
+                </select>  
+            </td>
           </tr>
           <tr>
             <th style="background-color:#B0B0B0">S</th>
-            <td><?php echo getName($lineup[4])[0] ?></td>
-            <td></td>
+            <td>
+                <select name="stroke" class='form-control'>
+                  <option value="<?php echo $lineup[3] ?>"><?php echo getName($lineup[3])[0] ?></option>
+                  <?php foreach ($athletes as $item): ?>
+                  <option value="<?php echo $item['athlete_id']; ?>">
+                    <?php echo $item['Name']; ?>
+                  </option>
+                  <?php endforeach; ?>
+                  <option value="NULL">--</option>
+                </select>
+            </td>
           </tr>
           <tr>
             <th style="background-color:#B0B0B0">Oars</th>
-            <td><?php echo $lineup[1] ?></td>
-            <td></td>
+            <td>
+                <input value="<?php echo $lineup[1] ?>" type="text" class="form-control" name="oars" required />
+            </td>
           </tr>
           <tr>
             <th style="background-color:#B0B0B0">Rig</th>
-            <td><?php echo $lineup[2] ?></td>
-            <td></td>
+            <td>
+                <input value="<?php echo $lineup[4] ?>" type="text" class="form-control" name="rig" required/>
+                <input value="<?php echo $displayedBoat ?>" type="hidden" name="theBoat" />
+                <input value="<?php echo $seats ?>" type="hidden" name="seatNumber" />
+              </form>
+            </td>
           </tr>
         </table>
+        <input class="btn btn-primary" type="submit" value="Finalize Lineup" name="lineup2" form="lineup-form2" style="width:70%"></input>
       <?php else: ?>
         <table class="w3-table w3-bordered w3-card-4 center" style="width:70%">
-          <tr>
-            <th style="background-color:#B0B0B0">1</th>
-            <td><?php echo getName($lineup[2])[0] ?></td>
-            <td></td>
+            <th style="background-color:#B0B0B0">S</th>
+            <td>
+              <form id="lineup-form1" action="make-lineups.php" method="post">
+                <select name="stroke" class='form-control'>
+                  <option value="<?php echo $lineup[2] ?>"><?php echo getName($lineup[2])[0] ?></option>
+                  <?php foreach ($athletes as $item): ?>
+                  <option value="<?php echo $item['athlete_id']; ?>">
+                    <?php echo $item['Name']; ?>
+                  </option>
+                  <?php endforeach; ?>
+                  <option value="NULL">--</option>
+                </select>
+            </td>
           </tr>
+          <tr>
             <th style="background-color:#B0B0B0">Oars</th>
-            <td><?php echo $lineup[1] ?></td>
-            <td></td>
+            <td>
+                <input value="<?php echo $lineup[1] ?>" type="text" class="form-control" name="oars" required />
+                <input value="<?php echo $displayedBoat ?>" type="hidden" name="theBoat" />
+                <input value="<?php echo $seats ?>" type="hidden" name="seatNumber" />
+            </td>
           </tr>
         </table>
-
+        <input class="btn btn-primary" type="submit" value="Finalize Lineup" name="lineup1" form="lineup-form1" style="width:70%"></input>
       <?php endif; ?>
 
       <?php endif; ?>
