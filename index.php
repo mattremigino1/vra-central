@@ -150,165 +150,245 @@ $myLineup = myLineup($athlete_id);
       <div class="row justify-content-center">
         <h3>Eights</h3>
         <table class="w3-table w3-bordered w3-card-4 center" style="width:70%">
-          <thead>
-            <tr style="background-color:#B0B0B0">
-              <th>Boat</th>
-              <th>Oars</th>
-              <th>Rigging</th>
-              <th>C</th>
-              <th>S</th>
-              <th>7</th>
-              <th>6</th>
-              <th>5</th>
-              <th>4</th>
-              <th>3</th>
-              <th>2</th>
-              <th>B</th>
-            </tr>
-          </thead>
-          <?php foreach ($eights as $item): ?>
             <tr>
+              <th style="background-color:#B0B0B0">Boat</th>
+              <?php foreach ($eights as $item): ?>
               <td>
-                <?php echo $item['boat_name']; ?>
+              <b><?php echo $item['boat_name']; ?></b>
               </td>
-              <td>
-                <?php echo $item['oars']; ?>
-              </td>
-              <td>
-                <?php echo $item['rigging']; ?>
-              </td>
-              <td>
-                <?php echo getName($item['coxswain'])[0]; ?>
-              </td>
-              <td>
-                <?php echo getName($item['one_seat'])[0]; ?>
-              </td>
-              <td>
-                <?php echo getName($item['two_seat'])[0]; ?>
-              </td>
-              <td>
-                <?php echo getName($item['three_seat'])[0]; ?>
-              </td>
-              <td>
-                <?php echo getName($item['four_seat'])[0]; ?>
-              </td>
-              <td>
-                <?php echo getName($item['five_seat'])[0]; ?>
-              </td>
-              <td>
-                <?php echo getName($item['six_seat'])[0]; ?>
-              </td>
-              <td>
-                <?php echo getName($item['seven_seat'])[0]; ?>
-              </td>
-              <td>
-                <?php echo getName($item['eight_seat'])[0]; ?>
-              </td>
+              <?php endforeach; ?>
             </tr>
-          <?php endforeach; ?>
+            <tr>
+              <th style="background-color:#B0B0B0">Oars</th>
+              <?php foreach ($eights as $item): ?>
+              <td>
+              <?php echo $item['oars']; ?>
+              </td>
+              <?php endforeach; ?>
+            </tr>
+            <tr>
+              <th style="background-color:#B0B0B0">Rigging</th>
+              <?php foreach ($eights as $item): ?>
+              <td>
+              <?php echo $item['rigging']; ?>
+              </td>
+              <?php endforeach; ?>
+            </tr>
+            <tr>
+              <th style="background-color:#B0B0B0">Bow</th>
+              <?php foreach ($eights as $item): ?>
+              <td>
+              <?php echo getName($item['one_seat'])[0]; ?>
+              </td>
+              <?php endforeach; ?>
+            </tr>
+            <tr>
+              <th style="background-color:#B0B0B0">2</th>
+              <?php foreach ($eights as $item): ?>
+              <td>
+              <?php echo getName($item['two_seat'])[0]; ?>
+              </td>
+              <?php endforeach; ?>
+            </tr>
+            <tr>
+              <th style="background-color:#B0B0B0">3</th>
+              <?php foreach ($eights as $item): ?>
+              <td>
+              <?php echo getName($item['three_seat'])[0]; ?>
+              </td>
+              <?php endforeach; ?>
+            </tr>
+            <tr>
+              <th style="background-color:#B0B0B0">4</th>
+              <?php foreach ($eights as $item): ?>
+              <td>
+              <?php echo getName($item['four_seat'])[0]; ?>
+              </td>
+              <?php endforeach; ?>
+            </tr>
+            <tr>
+              <th style="background-color:#B0B0B0">5</th>
+              <?php foreach ($eights as $item): ?>
+              <td>
+              <?php echo getName($item['five_seat'])[0]; ?>
+              </td>
+              <?php endforeach; ?>
+            </tr>
+            <tr>
+              <th style="background-color:#B0B0B0">6</th>
+              <?php foreach ($eights as $item): ?>
+              <td>
+              <?php echo getName($item['six_seat'])[0]; ?>
+              </td>
+              <?php endforeach; ?>
+            </tr>
+            <tr>
+              <th style="background-color:#B0B0B0">7</th>
+              <?php foreach ($eights as $item): ?>
+              <td>
+              <?php echo getName($item['seven_seat'])[0]; ?>
+              </td>
+              <?php endforeach; ?>
+            </tr>
+            <tr>
+              <th style="background-color:#B0B0B0">Stroke</th>
+              <?php foreach ($eights as $item): ?>
+              <td>
+              <?php echo getName($item['eight_seat'])[0]; ?>
+              </td>
+              <?php endforeach; ?>
+            </tr>
+            <tr>
+              <th style="background-color:#B0B0B0">Cox</th>
+              <?php foreach ($eights as $item): ?>
+              <td>
+              <?php echo getName($item['coxswain'])[0]; ?>
+              </td>
+              <?php endforeach; ?>
+            </tr>
         </table>
       </div>
       <div class="row justify-content-center">
         <h3>Fours</h3>
         <table class="w3-table w3-bordered w3-card-4 center" style="width:70%">
-          <thead>
-            <tr style="background-color:#B0B0B0">
-              <th>Boat</th>
-              <th>Oars</th>
-              <th>Rigging</th>
-              <th>C</th>
-              <th>S</th>
-              <th>3</th>
-              <th>2</th>
-              <th>B</th>
-            </tr>
-          </thead>
-          <?php foreach ($fours as $item): ?>
             <tr>
+              <th style="background-color:#B0B0B0">Boat</th>
+              <?php foreach ($fours as $item): ?>
               <td>
-                <?php echo $item['boat_name']; ?>
+              <b><?php echo $item['boat_name']; ?></b>
               </td>
-              <td>
-                <?php echo $item['oars']; ?>
-              </td>
-              <td>
-                <?php echo $item['rigging']; ?>
-              </td>
-              <td>
-                <?php echo getName($item['coxswain'])[0]; ?>
-              </td>
-              <td>
-                <?php echo getName($item['one_seat'])[0]; ?>
-              </td>
-              <td>
-                <?php echo getName($item['two_seat'])[0]; ?>
-              </td>
-              <td>
-                <?php echo getName($item['three_seat'])[0]; ?>
-              </td>
-              <td>
-                <?php echo getName($item['four_seat'])[0]; ?>
-              </td>
+              <?php endforeach; ?>
             </tr>
-          <?php endforeach; ?>
-        </table>
+            <tr>
+              <th style="background-color:#B0B0B0">Oars</th>
+              <?php foreach ($fours as $item): ?>
+              <td>
+              <?php echo $item['oars']; ?>
+              </td>
+              <?php endforeach; ?>
+            </tr>
+            <tr>
+              <th style="background-color:#B0B0B0">Rigging</th>
+              <?php foreach ($fours as $item): ?>
+              <td>
+              <?php echo $item['rigging']; ?>
+              </td>
+              <?php endforeach; ?>
+            </tr>
+            <tr>
+              <th style="background-color:#B0B0B0">Bow</th>
+              <?php foreach ($fours as $item): ?>
+              <td>
+              <?php echo getName($item['one_seat'])[0]; ?>
+              </td>
+              <?php endforeach; ?>
+            </tr>
+            <tr>
+              <th style="background-color:#B0B0B0">2</th>
+              <?php foreach ($fours as $item): ?>
+              <td>
+              <?php echo getName($item['two_seat'])[0]; ?>
+              </td>
+              <?php endforeach; ?>
+            </tr>
+            <tr>
+              <th style="background-color:#B0B0B0">3</th>
+              <?php foreach ($fours as $item): ?>
+              <td>
+              <?php echo getName($item['three_seat'])[0]; ?>
+              </td>
+              <?php endforeach; ?>
+            </tr>
+            <tr>
+              <th style="background-color:#B0B0B0">Stroke</th>
+              <?php foreach ($fours as $item): ?>
+              <td>
+              <?php echo getName($item['four_seat'])[0]; ?>
+              </td>
+              <?php endforeach; ?>
+            </tr>
+            <tr>
+              <th style="background-color:#B0B0B0">Cox</th>
+              <?php foreach ($fours as $item): ?>
+              <td>
+              <?php echo getName($item['coxswain'])[0]; ?>
+              </td>
+              <?php endforeach; ?>
+            </tr>
+        </table>   
       </div>
       <div class="row justify-content-center">
-        <h3>Double/Pair</h3>
+        <h3>Doubles/Pairs</h3>
         <table class="w3-table w3-bordered w3-card-4 center" style="width:70%">
-          <thead>
-            <tr style="background-color:#B0B0B0">
-              <th>Boat</th>
-              <th>Oars</th>
-              <th>Rigging</th>
-              <th>S</th>
-              <th>B</th>
-            </tr>
-          </thead>
-          <?php foreach ($twoman as $item): ?>
             <tr>
+              <th style="background-color:#B0B0B0">Boat</th>
+              <?php foreach ($twoman as $item): ?>
               <td>
-                <?php echo $item['boat_name']; ?>
+              <b><?php echo $item['boat_name']; ?></b>
               </td>
-              <td>
-                <?php echo $item['oars']; ?>
-              </td>
-              <td>
-                <?php echo $item['rigging']; ?>
-              </td>
-              <td>
-                <?php echo getName($item['one_seat'])[0]; ?>
-              </td>
-              <td>
-                <?php echo getName($item['two_seat'])[0]; ?>
-              </td>
+              <?php endforeach; ?>
             </tr>
-          <?php endforeach; ?>
+            <tr>
+              <th style="background-color:#B0B0B0">Oars</th>
+              <?php foreach ($twoman as $item): ?>
+              <td>
+              <?php echo $item['oars']; ?>
+              </td>
+              <?php endforeach; ?>
+            </tr>
+            <tr>
+              <th style="background-color:#B0B0B0">Rigging</th>
+              <?php foreach ($twoman as $item): ?>
+              <td>
+              <?php echo $item['rigging']; ?>
+              </td>
+              <?php endforeach; ?>
+            </tr>
+            <tr>
+              <th style="background-color:#B0B0B0">Bow</th>
+              <?php foreach ($twoman as $item): ?>
+              <td>
+              <?php echo getName($item['one_seat'])[0]; ?>
+              </td>
+              <?php endforeach; ?>
+            </tr>
+            <tr>
+              <th style="background-color:#B0B0B0">Stroke</th>
+              <?php foreach ($twoman as $item): ?>
+              <td>
+              <?php echo getName($item['two_seat'])[0]; ?>
+              </td>
+              <?php endforeach; ?>
+            </tr>
         </table>
       </div>
       <div class="row justify-content-center">
         <h3>Singles</h3>
         <table class="w3-table w3-bordered w3-card-4 center" style="width:70%">
-          <thead>
-            <tr style="background-color:#B0B0B0">
-              <th>Boat</th>
-              <th>Oars</th>
-              <th>1</th>
-            </tr>
-          </thead>
-          <?php foreach ($single as $item): ?>
             <tr>
+              <th style="background-color:#B0B0B0">Boat</th>
+              <?php foreach ($single as $item): ?>
               <td>
-                <?php echo $item['boat_name']; ?>
+              <b><?php echo $item['boat_name']; ?></b>
               </td>
-              <td>
-                <?php echo $item['oars']; ?>
-              </td>
-              <td>
-                <?php echo getName($item['one_seat'])[0]; ?>
-              </td>
+              <?php endforeach; ?>
             </tr>
-          <?php endforeach; ?>
+            <tr>
+              <th style="background-color:#B0B0B0">Oars</th>
+              <?php foreach ($single as $item): ?>
+              <td>
+              <?php echo $item['oars']; ?>
+              </td>
+              <?php endforeach; ?>
+            </tr>
+            <tr>
+              <th style="background-color:#B0B0B0">1</th>
+              <?php foreach ($single as $item): ?>
+              <td>
+              <?php echo getName($item['one_seat'])[0]; ?>
+              </td>
+              <?php endforeach; ?>
+            </tr>
         </table>
       </div>
     </div>

@@ -391,6 +391,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         <input class="btn btn-primary" type="submit" value="Finalize Lineup" name="lineup2" form="lineup-form2" style="width:70%"></input>
       <?php else: ?>
         <table class="w3-table w3-bordered w3-card-4 center" style="width:70%">
+          <tr>
             <th style="background-color:#B0B0B0">S</th>
             <td>
               <form id="lineup-form1" action="make-lineups.php" method="post">
