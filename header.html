@@ -14,11 +14,19 @@
           <li class="nav-item">
             <a class="nav-link" href="athlete-directory.php">Athlete Directory</a>
           </li>
-          <li>
-            <a class="nav-link" href="view-absences.php">View Absences</a>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="dropdown01" role="button" data-bs-toggle="dropdown" aria-expanded="false">Absences</a>
+            <ul class="dropdown-menu" aria-labelledby="dropdown01">
+              <li><a class="dropdown-item" href="view-absences.php">View Absences</a></li>
+              <li><a class="dropdown-item" href="absence.php">Absence Form</a></li>
+            </ul>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="absence.php">Absence Form</a>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="dropdown01" role="button" data-bs-toggle="dropdown" aria-expanded="false">Profile</a>
+            <ul class="dropdown-menu" aria-labelledby="dropdown01">
+              <li><a class="dropdown-item" href="view-account.php">View Profile</a></li>
+              <li><a class="dropdown-item" href="update-profile.php">Update Profile</a></li>
+            </ul>
           </li>
           <li class="nav-item">
             <form action="logout.php" method="post">

@@ -498,5 +498,52 @@ function getabsences() {
     return $results;
 }
 
+function getCurrentInfo ($athlete_id) {
+    global $db;
+    $query = "SELECT * FROM Athlete WHERE athlete_id = :athlete_id";
+    // prepare
+    $statement = $db->prepare($query);
+    $statement->bindValue(':athlete_id', $athlete_id);
+    // execute
+    $statement->execute();
+    $results = $statement->fetch(); //fetch() will retrieve only first row fetchAll will retrieve all rows
+    // close cursor
+    $statement->closeCursor();
+
+    return $results;
+}
+
+function updateAccount($athlete_id, $first_name, $last_name, $email, $phone, $dob, $grad_year, $height, $ath_weight, $class, $boat_side, $two_kprM, $two_kprS) 
+{ 
+    global $db;
+
+    // get total 2k PR
+    $two_k_pr = $two_kprM * 60 + $two_kprS;
+
+// prepare and execute the insert statement
+$query = "UPDATE Athlete SET first_name = :first_name, last_name = :last_name, email = :email, phone_number =:phone, date_of_birth=:dob, grad_year=:grad_year, height=:height, ath_weight=:ath_weight, class=:class, boat_side=:boat_side, twoKPR=:two_k_pr
+       WHERE athlete_id = :athlete_id";
+
+$stmt = $db->prepare($query);
+
+$stmt->bindValue(':athlete_id', $athlete_id);
+$stmt->bindValue(':first_name', $first_name);
+$stmt->bindValue(':last_name', $last_name);
+$stmt->bindValue(':email', $email);
+$stmt->bindValue(':phone', $phone);
+$stmt->bindValue(':dob', $dob);
+$stmt->bindValue(':grad_year', $grad_year);
+$stmt->bindValue(':height', $height);
+$stmt->bindValue(':ath_weight', $ath_weight);
+$stmt->bindValue(':class', $class);
+$stmt->bindValue(':boat_side', $boat_side);
+$stmt->bindValue(':two_k_pr', $two_k_pr);
+
+$stmt->execute();
+
+$stmt->closeCursor();
+
+return True;
+}
 
 ?>
