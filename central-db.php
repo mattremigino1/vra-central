@@ -379,4 +379,124 @@ function changeSeat($boat, $athlete_id, $seat) {
     $statement->closeCursor();
 }
 
+function get2WeeksPractices() {
+    global $db;
+    $query = "SELECT * FROM DailyWorkout NATURAL JOIN Practices WHERE dte <= (CURDATE() + INTERVAL 7 DAY) AND dte >= (CURDATE() - INTERVAL 7 DAY)";
+    // prepare
+    $statement = $db->prepare($query);
+    // execute
+    $statement->execute();
+    $results = $statement->fetchAll(); //fetch() will retrieve only first row fetchAll will retrieve all rows
+    // close cursor
+    $statement->closeCursor();
+    return $results;
+}
+
+function getWorkouts() {
+    global $db;
+    $query = "SELECT * FROM DailyWorkout";
+    // prepare
+    $statement = $db->prepare($query);
+    // execute
+    $statement->execute();
+    $results = $statement->fetchAll(); //fetch() will retrieve only first row fetchAll will retrieve all rows
+    // close cursor
+    $statement->closeCursor();
+    return $results;
+}
+
+function createPractice($practice_num, $dte, $workout_id) 
+{ 
+    global $db;
+
+    // prepare and execute the insert statement
+    $query = "INSERT INTO Practices
+        VALUES (:practice_num, :dte, :workout_id)";
+
+    $stmt = $db->prepare($query);
+
+    $stmt->bindValue(':practice_num', $practice_num);
+    $stmt->bindValue(':dte', $dte);
+    $stmt->bindValue(':workout_id', $workout_id);
+
+
+    try {
+        $stmt->execute();
+    }
+    Catch(Exception $e){
+        echo "Error Occured ... you likely input a date and practice number combination you have already logged ... please try again";
+        $stmt->closeCursor();
+        return False;
+    }
+    $stmt->closeCursor();
+
+    return True;
+}
+
+function createDailyWorkout($descr) {
+    global $db;
+
+    // prepare and execute the insert statement
+    $query = "INSERT INTO DailyWorkout (descr)
+        VALUES (:descr)";
+
+    $stmt = $db->prepare($query);
+
+    $stmt->bindValue(':descr', $descr);
+
+
+    try {
+        $stmt->execute();
+    }
+    Catch(Exception $e){
+        echo "Error Occured ... please try again";
+        $stmt->closeCursor();
+        return False;
+    }
+    $stmt->closeCursor();
+
+    return True;
+}
+
+function createAbsence($athlete_id, $practice_num, $dte) {
+    global $db;
+
+    // prepare and execute the insert statement
+    $query = "INSERT INTO Attendance (athlete_id, practice_num, dte, attended)
+        VALUES (:athlete_id, :practice_num, :dte, 'N')";
+
+    $stmt = $db->prepare($query);
+
+    $stmt->bindValue(':athlete_id', $athlete_id);
+    $stmt->bindValue(':practice_num', $practice_num);
+    $stmt->bindValue(':dte', $dte);
+
+
+    try {
+        $stmt->execute();
+    }
+    Catch(Exception $e){
+        echo "Error Occured ... you likely input a date and practice number combination you have already logged ...please try again";
+        $stmt->closeCursor();
+        return False;
+    }
+    $stmt->closeCursor();
+
+    return True;
+}
+
+function getabsences() {
+    global $db;
+    $query = "SELECT * FROM Attendance WHERE dte >= CURDATE()";
+    // prepare
+    $statement = $db->prepare($query);
+    // execute
+    $statement->execute();
+    $results = $statement->fetchAll(); //fetch() will retrieve only first row fetchAll will retrieve all rows
+    // close cursor
+    $statement->closeCursor();
+    return $results;
+}
+
+
 ?>
