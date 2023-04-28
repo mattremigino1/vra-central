@@ -107,7 +107,7 @@ if ($account_updated) {
       <div class="form-group">
         <label>Boat Side: </label>
         <select id="btside" name="boat_side">
-            <option value="<?php echo $current_info[10] ?>"><?php echo $current_info[13] ?></option>
+            <option value="<?php echo $current_info[13] ?>"><?php echo $current_info[13] ?></option>
             <option value="S">Starboard</option>
             <option value="P">Port</option>
             <option value="S/P">Port/Starboard</option>
