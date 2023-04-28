@@ -1,6 +1,5 @@
 # VRA-Central
-
-The final version of this app will be hosted on GCP.  However, for testing and development purposes, we will use the CS server database as well as a local xampp apache webserver.
+We will use the CS server database as well as a local xampp apache webserver.
 
 ## deploying on XAMPP
 
