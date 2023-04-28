@@ -191,14 +191,15 @@ function getAthletes() {
     return $results;
 }
 
-function deleteWorkout($athlete_id, $workout_num) {
+function deleteWorkout($athlete_id, $workout_num, $dte) {
     global $db;
-    $query = "DELETE FROM ExtraWork WHERE athlete_id=:athlete_id AND workout_num = :workout_num";
+    $query = "DELETE FROM ExtraWork WHERE athlete_id=:athlete_id AND workout_num = :workout_num AND dte=:dte";
     // prepare
      // prepare
     $statement = $db->prepare($query);
     $statement->bindValue(':athlete_id', $athlete_id);
     $statement->bindValue(':workout_num', $workout_num);
+    $statement->bindValue(':dte', $dte);
     // execute
     $statement->execute();
     // close cursor
