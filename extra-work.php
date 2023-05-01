@@ -85,7 +85,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
       <input class="btn btn-primary" name="selectAthlete" type="submit" value="View Athlete" />
     </form>
 
-    <div class="row justify-content-center">
     <table class="table table-hover table-striped table-sm athlete-directory-table">
         <thead>
           <tr>
@@ -125,7 +124,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
           </tr>
         <?php endforeach; ?>
       </table>
-    </div>
+
 
   </div>
   <br> <br>

@@ -1,5 +1,5 @@
 :root {
-  --highlight: #EF5701;
+  --highlight: #ef5701;
 }
 
 /* type=submit, name != logout */
@@ -23,7 +23,7 @@ body {
 
 a {
   color: inherit;
-  text-decoration: underline var(--highlight);;
+  text-decoration: underline var(--highlight);
 }
 
 a:hover,
@@ -144,7 +144,8 @@ header {
   margin-left: 12px;
 }
 
-.workouts-section, .lineups-section {
+.workouts-section,
+.lineups-section {
   margin-top: 48px;
 }
 
@@ -168,3 +169,13 @@ header {
   gap: 12px;
   margin-top: 4px;
 }
+
+.view-acct-table tr > th {
+  width: 30%;
+}
+
+.view-acct-table {
+  margin-top: 48px;
+  width: 40%;
+}
+

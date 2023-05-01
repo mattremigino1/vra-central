@@ -12,7 +12,7 @@ if ((isset($_SESSION['Cloggedin']) && $_SESSION['Cloggedin'] == true) || (isset(
 require("central-db.php");
 
 $absences = getabsences();
-  
+
 ?>
 
 <!-- 1. create HTML5 doctype -->
@@ -45,35 +45,33 @@ $absences = getabsences();
   } else {
     include("header.html");
   }
-  
+
   ?>
 
   <div class="container">
-  <div class="row justify-content-center">
-      <h2>Absences</h2>
-      <table class="w3-table w3-bordered w3-card-4 center" style="width:70%">
-        <thead>
-          <tr style="background-color:#B0B0B0">
-            <th>Date</th>
-            <th>Session</th>
-            <th>Athlete</th>
-          </tr>
-        </thead>
-        <?php foreach ($absences as $item): ?>
-          <tr>
-            <td>
-                <?php echo $item['dte']?>
-            </td>
-            <td>
-                <?php echo $item['practice_num']?>
-            </td>
-            <td>
-              <?php echo getName($item['athlete_id'])[0]; ?>
-            </td>
-          </tr>
-        <?php endforeach; ?>
-      </table>
-    </div>
+  <h1 class="page-title">Absences</h1>
+    <table class="table table-hover table-striped table-sm athlete-directory-table">
+      <thead>
+        <tr>
+          <th>Date</th>
+          <th>Session</th>
+          <th>Athlete</th>
+        </tr>
+      </thead>
+      <?php foreach ($absences as $item): ?>
+        <tr>
+          <td>
+            <?php echo $item['dte'] ?>
+          </td>
+          <td>
+            <?php echo $item['practice_num'] ?>
+          </td>
+          <td>
+            <?php echo getName($item['athlete_id'])[0]; ?>
+          </td>
+        </tr>
+      <?php endforeach; ?>
+    </table>
   </div>
   <br> <br>
   <?php include('footer.html') ?>
