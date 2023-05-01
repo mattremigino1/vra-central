@@ -49,7 +49,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     <div class="container">
       <h1 class="page-title">Athlete Directory</h1>
-      <form action="athlete-directory.php" method="post" class="athlete-directory-form">
+      <form action="athlete-directory.php" method="post" class="filter-form-container">
         <select name="athlete" class='form-control'>
           <option value="">-- Select --</option>
           <?php foreach ($all_athletes as $item): ?>

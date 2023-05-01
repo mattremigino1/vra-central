@@ -2,6 +2,17 @@
   --highlight: #EF5701;
 }
 
+/* type=submit, name != logout */
+input[type="submit"]:not([name="logoutbutton"]) {
+  background-color: var(--highlight);
+  border: none;
+  color: white;
+  padding: 8px 16px;
+  text-decoration: none;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+
 html,
 body {
   padding: 0;
@@ -20,6 +31,10 @@ a:focus {
   color: var(--highlight);
   text-decoration: none;
   cursor: pointer;
+}
+
+.container {
+  padding: 0px;
 }
 
 /* LOGIN PAGE */
@@ -146,7 +161,7 @@ header {
   font-size: 14px;
 }
 
-.athlete-directory-form {
+.filter-form-container {
   width: 50%;
   display: flex;
   flex-direction: row;
