@@ -93,7 +93,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <h2 class="page-title">Create Lineups</h2>
     <form action="make-lineups.php" method="post" class="filter-form-container">
       <select name="boat" class='form-control'>
-        <option value="">--- Select ---</option>
+        <option value="">--- Select boat ---</option>
         <?php foreach ($boats as $item): ?>
           <option value="<?php echo $item['Name']; ?>">
             <?php echo $item['Name']; ?>
@@ -107,11 +107,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
       <?php if ($displayedBoat == ""): ?>
         <h3>Select a boat above</h3>
       <?php else: ?>
-        <h3 class="boat-title-name" style="width: 60%; text-align: center; margin-top: 32px">
+        <h3 class="boat-title-name" style="width: 60%; text-align: center; margin-top: 64px">
           <?php echo $displayedBoat ?>
         </h3>
         <?php if ($seats == "8"): ?>
-          <table class="w3-table w3-bordered w3-card-4 center" style="width: 60%">
+          <table class="center" style="width: 60%">
             <tr>
               <th style="background-color:#B0B0B0">B</th>
               <td>
@@ -256,9 +256,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             </tr>
           </table>
           <input class="btn btn-primary" type="submit" value="Finalize Lineup" name="lineup8" form="lineup-form8"
-            style="width:70%"></input>
+            style="width: 60%;"></input>
         <?php elseif ($seats == "4"): ?>
-          <table class="w3-table w3-bordered w3-card-4 center" style="width:70%">
+          <table class="w3-table w3-bordered w3-card-4 center" style="width: 60%;">
             <tr>
               <th style="background-color:#B0B0B0">B</th>
               <td>
@@ -347,9 +347,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             </tr>
           </table>
           <input class="btn btn-primary" type="submit" value="Finalize Lineup" name="lineup4" form="lineup-form4"
-            style="width:70%"></input>
+            style="width: 60%;"></input>
         <?php elseif ($seats == "2"): ?>
-          <table class="w3-table w3-bordered w3-card-4 center" style="width:70%">
+          <table class="w3-table w3-bordered w3-card-4 center" style="width: 60%;">
             <tr>
               <th style="background-color:#B0B0B0">B</th>
               <td>
@@ -396,9 +396,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             </tr>
           </table>
           <input class="btn btn-primary" type="submit" value="Finalize Lineup" name="lineup2" form="lineup-form2"
-            style="width:70%"></input>
+            style="width: 60%;"></input>
         <?php else: ?>
-          <table class="w3-table w3-bordered w3-card-4 center" style="width:70%">
+          <table class="w3-table w3-bordered w3-card-4 center" style="width: 60%;">
             <tr>
               <th style="background-color:#B0B0B0">S</th>
               <td>
@@ -424,7 +424,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             </tr>
           </table>
           <input class="btn btn-primary" type="submit" value="Finalize Lineup" name="lineup1" form="lineup-form1"
-            style="width:70%"></input>
+            style="width: 60%;"></input>
         <?php endif; ?>
 
       <?php endif; ?>
