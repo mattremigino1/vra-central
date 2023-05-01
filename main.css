@@ -51,7 +51,6 @@ a:focus {
 
 .custom-footer {
   margin-top: auto !important;
-  width: 100vw;
   display: flex;
   justify-content: center;
   color: grey;
@@ -73,9 +72,11 @@ a:focus {
   height: 90vh;
 }
 
-.login-btn {
+.login-btn, .create-account-btn {
   width: inherit;
   margin-top: 1rem;
+  background-color: transparent!important;
+  color: var(--highlight)!important;
 }
 
 .create-account-btn {
