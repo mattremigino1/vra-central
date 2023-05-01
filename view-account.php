@@ -43,97 +43,101 @@ $name = getName($athlete_id);
 
   <?php include("header.html"); ?>
   <div class="container">
-    <br>
-    <h1>
-      <?php
-      echo "Welcome ";
-      echo $name[0];
-      ?>
-    </h1>
-    <h4>
-      <?php
-      echo "Athlete ID: ";
-      echo $athlete_id;
-      ?>
-    </h4>
-    <br>
+    <div class="title-wrapper">
+      <h1 class="page-title">
+        Welcome,
+        <?php
+        echo $name[0];
+        ?>
+      </h1>
+      <span class='welcome-subtitle'>
+        (ID:
+        <?php
+        echo $athlete_id;
+        ?>
+        )
+      </span>
+    </div>
 
     <div class="row justify-content-center">
       <div class="row justify-content-center">
-        <h3>Profile</h3>
-        <table class="w3-table w3-bordered w3-card-4 center" style="width:70%">
-            <tr>
-              <th style="background-color:#B0B0B0">Name</th>
-              <td>
-              <?php echo $current_info[1]; echo " "; echo $current_info[2]; ?>
-              </td>
-            </tr>
-            <tr>
-              <th style="background-color:#B0B0B0">Email</th>
-              <td>
+        <table class="table table-hover table-sm athlete-directory-table view-acct-table">
+          <tr>
+            <th>Name</th>
+            <td>
+              <?php echo $current_info[1];
+              echo " ";
+              echo $current_info[2]; ?>
+            </td>
+          </tr>
+          <tr>
+            <th>Email</th>
+            <td>
               <?php echo $current_info[3]; ?>
-              </td>
-            </tr>
-            <tr>
-              <th style="background-color:#B0B0B0">Phone Number</th>
-              <td>
-              <?php echo $current_info[4];?>
-              </td>
-            </tr>
-            <tr>
-              <th style="background-color:#B0B0B0">Date of Birth</th>
-              <td>
-              <?php echo $current_info[5];?>
-              </td>
-            </tr>
-            <tr>
-              <th style="background-color:#B0B0B0">Grad Year</th>
-              <td>
+            </td>
+          </tr>
+          <tr>
+            <th>Phone Number</th>
+            <td>
+              <?php echo $current_info[4]; ?>
+            </td>
+          </tr>
+          <tr>
+            <th>Date of Birth</th>
+            <td>
+              <?php echo $current_info[5]; ?>
+            </td>
+          </tr>
+          <tr>
+            <th>Grad Year</th>
+            <td>
               <?php echo $current_info[6]; ?>
-              </td>
-            </tr>
-            <tr>
-              <th style="background-color:#B0B0B0">Height (inches)</th>
-              <td>
+            </td>
+          </tr>
+          <tr>
+            <th>Height (inches)</th>
+            <td>
               <?php echo $current_info[7]; ?>
-              </td>
-            </tr>
-            <tr>
-              <th style="background-color:#B0B0B0">Weight</th>
-              <td>
+            </td>
+          </tr>
+          <tr>
+            <th>Weight</th>
+            <td>
               <?php echo $current_info[8]; ?>
-              </td>
-            </tr>
-            <tr>
-              <th style="background-color:#B0B0B0">Class</th>
-              <td>
+            </td>
+          </tr>
+          <tr>
+            <th>Class</th>
+            <td>
               <?php echo $current_info[9]; ?>
-              </td>
-            </tr>
-            <tr>
-              <th style="background-color:#B0B0B0">2k PR</th>
-              <td>
-              <?php echo floor($current_info[10]/60); echo ":"; echo $current_info[10]-(floor($current_info[10]/60))*60; ?>
-              </td>
-            </tr>
-            <tr>
-              <th style="background-color:#B0B0B0">G8</th>
-              <td>
+            </td>
+          </tr>
+          <tr>
+            <th>2k PR</th>
+            <td>
+              <?php echo floor($current_info[10] / 60);
+              echo ":";
+              echo $current_info[10] - (floor($current_info[10] / 60)) * 60; ?>
+            </td>
+          </tr>
+          <tr>
+            <th>G8</th>
+            <td>
               <?php echo $current_info[11]; ?>
-              </td>
-            </tr>
-            <tr>
-              <th style="background-color:#B0B0B0">Age</th>
-              <td>
+            </td>
+          </tr>
+          <tr>
+            <th>Age</th>
+            <td>
               <?php echo $current_info[12]; ?>
-              </td>
-            </tr>
-            <tr>
-              <th style="background-color:#B0B0B0">Boat Side</th>
-              <td>
+            </td>
+          </tr>
+          <tr>
+            <th>Boat Side</th>
+            <td>
               <?php echo $current_info[13]; ?>
-              </td>
-            </tr>
+            </td>
+          </tr>
         </table>
       </div>
     </div>
@@ -142,8 +146,7 @@ $name = getName($athlete_id);
 
 </body>
 <?php include('footer.html') ?>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
-    crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+  integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 
 </html>

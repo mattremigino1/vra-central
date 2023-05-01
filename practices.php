@@ -44,11 +44,10 @@ $practices = get2WeeksPractices();
   ?>
 
   <div class="container">
-  <div class="row justify-content-center">
-      <h2>Two Week Practice View</h2>
-      <table class="w3-table w3-bordered w3-card-4 center" style="width:70%">
+      <h2 class="page-title">Two Week Practice View</h2>
+      <table class="table table-striped" style="margin-top: 16px">
         <thead>
-          <tr style="background-color:#B0B0B0">
+          <tr>
             <th>Date</th>
             <th>Session</th>
             <th>Description</th>
@@ -74,7 +73,6 @@ $practices = get2WeeksPractices();
           </tr>
         <?php endforeach; ?>
       </table>
-    </div>
   </div>
   <br> <br>
   <?php include('footer.html') ?>
