@@ -132,3 +132,24 @@ header {
 .workouts-section, .lineups-section {
   margin-top: 48px;
 }
+
+.athlete-directory-table {
+  margin-top: 24px;
+  width: 100%;
+}
+
+.athlete-directory-tr {
+  font-size: 12px;
+}
+
+.athlete-directory-table td {
+  font-size: 14px;
+}
+
+.athlete-directory-form {
+  width: 50%;
+  display: flex;
+  flex-direction: row;
+  gap: 12px;
+  margin-top: 4px;
+}

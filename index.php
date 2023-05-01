@@ -388,11 +388,6 @@ $myLineup = myLineup($athlete_id);
         </table>
       </div>
     </div>
-
-
-
-
-
   </div>
   <br> <br>
   <?php include('footer.html') ?>
