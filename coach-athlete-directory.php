@@ -43,7 +43,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 <body>
   <div class="page-body">
-    <?php include("header.html") ?>
+    <?php
+    include("Cheader.html");
+    ?>
 
     <!-- Add form to POST to athlete-directory.php and filter by name -->
 
