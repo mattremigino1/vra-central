@@ -1,19 +1,41 @@
+:root {
+  --highlight: #EF5701;
+}
+
+html,
+body {
+  padding: 0;
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
+    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+}
+
+a {
+  color: inherit;
+  text-decoration: underline var(--highlight);;
+}
+
+a:hover,
+a:focus {
+  color: var(--highlight);
+  text-decoration: none;
+  cursor: pointer;
+}
+
 /* LOGIN PAGE */
 .btn-link {
-  text-decoration: none!important;
+  text-decoration: none !important;
 }
 
 .page-body {
-  min-height: 100vh;
+  height: 100vh;
   width: 100vw;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
 }
 
 .custom-footer {
-  margin-top: auto!important;
+  margin-top: auto !important;
   width: 100vw;
   display: flex;
   justify-content: center;
@@ -42,7 +64,7 @@
 }
 
 .create-account-btn {
-  margin-top: .5rem;
+  margin-top: 0.5rem;
 }
 
 .form-container {
@@ -62,4 +84,51 @@
 
 header {
   width: 100%;
+}
+
+.title-wrapper {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+}
+
+.page-title {
+  margin: 64px 0 0;
+}
+
+.workouts-section {
+  display: flex;
+  flex-direction: row;
+}
+
+.workouts-section > * {
+  margin: 0;
+  padding: 0;
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+  text-align: left;
+}
+
+.workouts-section table {
+  width: 80%;
+}
+
+.workouts-section h2 {
+  margin: 0px 0px 4px;
+  padding: 0;
+}
+
+.dynamic-item {
+  color: var(--highlight);
+}
+
+.welcome-subtitle {
+  font-size: 24px;
+  margin-left: 12px;
+}
+
+.workouts-section, .lineups-section {
+  margin-top: 48px;
 }
