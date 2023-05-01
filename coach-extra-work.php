@@ -68,9 +68,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
   ?>
 
   <div class="container">
-    <div class="row justify-content-center">
-    <form action="coach-extra-work.php" method="post">
-      <label><b>Athlete:</b></label>
+    <h2 class="page-title">Extra Work</h2>
+    <form action="coach-extra-work.php" method="post" class="filter-form-container">
       <select name="athlete" class='form-control'>
       <option value="">--- Select ---</option>
       <?php foreach ($athletes as $item): ?>
@@ -83,11 +82,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     </form>
     
     <div class="row justify-content-center">
-       <h3>Workouts for <?php echo $displayedAthlete ?></h3>
+       <h2 class="page-title" style="margin-top: 32px">Workouts for <?php echo $displayedAthlete ?></h2>
        <h5>Total Minutes: <?php echo $totalMins ?></h5>
-      <table class="w3-table w3-bordered w3-card-4 center" style="width:70%">
+      <table class="table table-hover table-striped table-sm athlete-directory-table">
         <thead>
-          <tr style="background-color:#B0B0B0">
+          <tr>
             <th>Date</th>
             <th>Minutes</th>
             <th>Type</th>
@@ -111,7 +110,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             </td>
             <td>
               <form action="coach-extra-work.php" method="post">
-                <input type="submit" name="deleteBtn" value="Delete" class="btn btn-danger" />
+                <input type="submit" name="deleteBtn" value="Delete" class="btn btn-danger" style="font-size: 14px; padding: 0px; margin: 0px; background-color: transparent; color: var(--highlight)"/>
                 <input type="hidden" name="delete_athid" 
                        value="<?php echo $item['athlete_id']; ?>"  />
                 <input type="hidden" name="delete_workoutNum" 
